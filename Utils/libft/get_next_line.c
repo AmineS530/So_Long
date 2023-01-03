@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:33:53 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/03 13:49:41 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/03 14:12:37 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*ft_find_line(char *alpha)
 		return (NULL);
 	while (alpha[n_line.i] != '\0' && alpha[n_line.i] != '\n')
 		n_line.i++;
-	n_line.nextline = ft_substr(alpha, 0, n_line.i + 1, 0);
+	n_line.nextline = ft_substr_free(alpha, 0, n_line.i + 1, 0);
 	return (n_line.nextline);
 }
 
@@ -80,7 +80,7 @@ char	*ft_set_remainder(char *alpha)
 	n_line.owo = 0;
 	while (alpha[n_line.i + n_line.owo] != '\0')
 		n_line.owo++;
-	alpha = ft_substr(alpha, n_line.i, n_line.owo + n_line.i + 1, 42069);
+	alpha = ft_substr_free(alpha, n_line.i, n_line.owo + n_line.i + 1, 42069);
 	return (alpha);
 }
 
@@ -102,7 +102,7 @@ char	*ft_read_from_fd(int fd, char *alpha)
 			return (NULL);
 		}
 		read_fd.buffer[read_fd.bytes_read] = '\0';
-		alpha = ft_strjoin(alpha, read_fd.buffer);
+		alpha = ft_strjoin_free(alpha, read_fd.buffer);
 		if (ft_strchr(alpha, '\n'))
 			break ;
 	}
