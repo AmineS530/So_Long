@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:37:22 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/01 14:19:48 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/03 21:10:05 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ int	main(void)
 	img.img = mlx_new_image(mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
+	for (int i = 0 ;i < 1079; i++)
+	{
+		
+		my_mlx_pixel_put(&img, 5, i, 0x00FF0000);
+	}
 	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
