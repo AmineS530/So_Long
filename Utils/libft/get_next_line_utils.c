@@ -6,13 +6,13 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 20:03:31 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/03 13:49:51 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/04 12:42:38 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+size_t	gnl_strlen(const char *s)
 {
 	size_t	owo;
 
@@ -22,7 +22,7 @@ size_t	ft_strlen(const char *s)
 	return (owo);
 }
 
-char	*ft_strjoin_free(char *s1, char *s2)
+char	*gnl_strjoin_free(char *s1, char *s2)
 {
 	size_t	s1len;
 	size_t	s2len;
@@ -31,8 +31,8 @@ char	*ft_strjoin_free(char *s1, char *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	s1len = ft_strlen(s1);
-	s2len = ft_strlen(s2);
+	s1len = gnl_strlen(s1);
+	s2len = gnl_strlen(s2);
 	i = -1;
 	joined = malloc(sizeof(char) * (s1len + s2len + 1));
 	if (!joined)
@@ -50,13 +50,13 @@ char	*ft_strjoin_free(char *s1, char *s2)
 	return (joined);
 }
 
-char	*ft_strdup(const char *s1)
+char	*gnl_strdup(const char *s1)
 {
 	size_t	len;
 	char	*mmal;
 	int		i;
 
-	len = ft_strlen(s1);
+	len = gnl_strlen(s1);
 	mmal = malloc((len + 1) * sizeof(char));
 	if (!mmal)
 	{
@@ -72,7 +72,7 @@ char	*ft_strdup(const char *s1)
 	return (mmal);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*gnl_strchr(const char *s, int c)
 {
 	int		i;
 	char	*uwu;
@@ -96,7 +96,7 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-void	*ft_calloc(size_t count, size_t size)
+void	*gnl_calloc(size_t count, size_t size)
 {
 	void	*owo;
 	size_t	total;
