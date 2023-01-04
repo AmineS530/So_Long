@@ -1,5 +1,5 @@
-0 Invalid map name
-1 Map doesn't exist
-2 map border isn't aligned
-3 Invalid map shape
-4 Invalid map settings
+1 Invalid map name
+2 Map doesn't exist
+3 map border isn't aligned
+4 Invalid map shape
+5 Invalid map settings

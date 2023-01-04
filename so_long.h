@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/04 15:43:08 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/04 17:52:42 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "Utils/libft/get_next_line.h"
 # include "Utils/libft/libft.h"
 # include "Utils/ft_printf/ft_printf.h"
-
+# include"Errors/errors.h"
 typedef struct s_map_data
 {
 	int		y;

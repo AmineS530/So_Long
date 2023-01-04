@@ -7,6 +7,8 @@ OBJ = game.o
 
 LIBFT = Utils/libft/
 
+ERRORS = Errors/
+
 LIBFT_PATH = Utils/libft/libft.a
 
 FT_PRINTF = Utils/ft_printf/

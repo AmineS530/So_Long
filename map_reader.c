@@ -6,22 +6,13 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/04 15:56:12 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/04 19:00:08 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 /*ill need a tmp fd while i get the actual fd or actually open the map here*/
-char	*ft_free(char *map, char *str)
-{
-	char	*ayaya;
-
-	ayaya = ft_strjoin(map, str);
-	free (str);
-	return (ayaya);
-}
-
 char	*name_checker(char *map_name)
 {
 	size_t	len;
@@ -29,12 +20,9 @@ char	*name_checker(char *map_name)
 
 	len = ft_strlen(map_name);
 	if (len < 4)
-	{
-		ft_printf("Invalid map name");
-		exit(0);
-	}
+		invalid_name_err();
 	ber = ft_strrchr(map_name, '.');
-	if (ft_strncmp(ber, ".ber",4) == 0)
+	if (ft_strncmp(ber, ".ber", 4) == 0)
 		return (map_name);
 	return (NULL);
 }
@@ -52,59 +40,52 @@ char	**read_map(char *map_name)
 	map = ft_strdup("");
 	fd = open(name_checker(map_name), O_RDONLY);
 	if (fd < 0)
+		nomap_err();
+	while (str)
 	{
-		ft_printf("Map doesn't exist");
-		exit(1);
+		str = get_next_line(fd);
+		map = ft_strjoin(map, str);
+		free (str);
 	}
-	while ((str = get_next_line(fd)))
-		map = ft_free(map, str);
-	fullmap = ft_split(map , '\n');
+	fullmap = ft_split(map, '\n');
 	close(fd);
 	free (map);
 	return (fullmap);
 }
 
 /* Player-Collectable-Exit-Shape_checker */
-void	pces_checker(t_mapinfo *ayaya)
+void	pces_checker(t_mapinfo *pces)
 {
-	ayaya->y = 0;
-	ayaya->res = ft_strlen(ayaya->map[ayaya->y]);
-	while (ayaya->map[ayaya->y])
+	pces->res = ft_strlen(pces->map[pces->y]);
+	while (pces->map[pces->y])
 	{
-		ayaya->x = 0;
-		while(ayaya->map[ayaya->y][ayaya->x])
+		pces->x = 0;
+		while (pces->map[pces->y][pces->x])
 		{
-		if (ayaya->res != ft_strlen(ayaya->map[ayaya->y]))
-		{
-			ft_printf("map border isn't aligned");
-			exit(2);
+			if (pces->res != ft_strlen(pces->map[pces->y]))
+				map_border_err();
+			if (pces->map[pces->y][pces->x] == 'P')
+				pces->player_count++;
+			if (pces->map[pces->y][pces->x] == 'C')
+				pces->collectables_count++;
+			if (pces->map[pces->y][pces->x] == 'E')
+				pces->exit_count++;
+			pces->x++;
 		}
-		if (ayaya->map[ayaya->y][ayaya->x] == 'P')
-			ayaya->player_count++;
-		if (ayaya->map[ayaya->y][ayaya->x] == 'C')
-			ayaya->collectables_count++;
-		if (ayaya->map[ayaya->y][ayaya->x] == 'E')
-			ayaya->exit_count++;
-		ayaya->x++;
-		}
-		ayaya->y++;
+		pces->y++;
 	}
-	if (ayaya->res <= ayaya->y)
-	{
-		ft_printf("Invalid map shape, maps should be rectangular");
-		exit(3);
-	}
-	if (ayaya->player_count != 1 || ayaya->collectables_count < 1 || ayaya->exit_count != 1)
-	{
-		ft_printf("Invalid map settings");
-		exit(4);
-	}
+	if (pces->res <= pces->y)
+		invalid_shape_err();
+	if (pces->player_count != 1 || pces->collectables_count < 1
+		|| pces->exit_count != 1)
+		invalid_settings_err();
 }
 /* mc = Map Check*/
 
 t_mapinfo	process_map(char *map_name)
 {
-	t_mapinfo mc;
+	t_mapinfo	mc;
+
 	mc.y = 0;
 	mc.x = 0;
 	mc.map = read_map(map_name);
@@ -112,7 +93,7 @@ t_mapinfo	process_map(char *map_name)
 	mc.collectables_count = 0;
 	mc.exit_count = 0;
 	pces_checker(&mc);
-	return(mc);
+	return (mc);
 }
 
 int main(int argc, char *argv[])
@@ -122,7 +103,9 @@ int main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		test = process_map(argv[1]);
+		ft_printf("%d", test.collectables_count);
+		ft_printf("%d", test.player_count);
+		ft_printf("%d", test.exit_count);
 	}
 	return (0);
 }
-
