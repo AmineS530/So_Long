@@ -6,25 +6,11 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:37:22 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/03 21:10:05 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/04 14:24:53 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// int main(int argc, char *argv[])
-// {
-// 	void	*mlx;
-// 	void	*mlx_win;
-
-// 	(void)argv;
-// 	if (argc == 2)
-// 	{
-// 		mlx = mlx_init();
-// 		mlx_win = mlx_new_window(mlx, 1920, 1080, "So Long");
-// 		mlx_loop(mlx);
-// 	}
-// }
 
 typedef struct	s_data {
 	void	*img;
@@ -49,13 +35,12 @@ int	main(void)
 	t_data	img;
 
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "AYAYA");
 	img.img = mlx_new_image(mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
 	for (int i = 0 ;i < 1079; i++)
 	{
-		
 		my_mlx_pixel_put(&img, 5, i, 0x00FF0000);
 	}
 	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);

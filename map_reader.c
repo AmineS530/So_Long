@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/04 14:21:41 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/04 15:56:12 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,36 +64,65 @@ char	**read_map(char *map_name)
 	return (fullmap);
 }
 
-/* Player-Collectable-Exit_checker */
-void	pce_checker(t_mapinfo ayaya)
+/* Player-Collectable-Exit-Shape_checker */
+void	pces_checker(t_mapinfo *ayaya)
 {
-	while (ayaya.map[ayaya.y])
+	ayaya->y = 0;
+	ayaya->res = ft_strlen(ayaya->map[ayaya->y]);
+	while (ayaya->map[ayaya->y])
 	{
-		if (ft_strchr(ayaya.map[ayaya.y],'P'))
-			ayaya.player_count++;
-		if (ft_strchr(ayaya.map[ayaya.y],'C'))
-			ayaya.collectables_count++;
-		if (ft_strchr(ayaya.map[ayaya.y],'E'))
-			ayaya.exit_count++;
-		ayaya.y++;
+		ayaya->x = 0;
+		while(ayaya->map[ayaya->y][ayaya->x])
+		{
+		if (ayaya->res != ft_strlen(ayaya->map[ayaya->y]))
+		{
+			ft_printf("map border isn't aligned");
+			exit(2);
+		}
+		if (ayaya->map[ayaya->y][ayaya->x] == 'P')
+			ayaya->player_count++;
+		if (ayaya->map[ayaya->y][ayaya->x] == 'C')
+			ayaya->collectables_count++;
+		if (ayaya->map[ayaya->y][ayaya->x] == 'E')
+			ayaya->exit_count++;
+		ayaya->x++;
+		}
+		ayaya->y++;
 	}
-	if (ayaya.player_count != 1 || ayaya.collectables_count < 1 || ayaya.exit_count != 1)
+	if (ayaya->res <= ayaya->y)
+	{
+		ft_printf("Invalid map shape, maps should be rectangular");
+		exit(3);
+	}
+	if (ayaya->player_count != 1 || ayaya->collectables_count < 1 || ayaya->exit_count != 1)
 	{
 		ft_printf("Invalid map settings");
-		exit(3);
+		exit(4);
 	}
 }
 /* mc = Map Check*/
-t_mapinfo	*process_map(char *map_name)
-{
-	t_mapinfo	mc;
 
+t_mapinfo	process_map(char *map_name)
+{
+	t_mapinfo mc;
 	mc.y = 0;
 	mc.x = 0;
 	mc.map = read_map(map_name);
 	mc.player_count = 0;
 	mc.collectables_count = 0;
 	mc.exit_count = 0;
-	pce_checker(mc);
+	pces_checker(&mc);
 	return(mc);
 }
+
+int main(int argc, char *argv[])
+{
+	t_mapinfo test;
+
+	if (argc == 2)
+	{
+		test = process_map(argv[1]);
+	}
+	return (0);
+}
+
