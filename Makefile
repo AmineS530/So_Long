@@ -35,6 +35,7 @@ clean :
 fclean : clean
 	make -C $(LIBFT) fclean
 	make -C $(FT_PRINTF) fclean
+	rm -rf $(NAME)
 
 re : fclean all
 
