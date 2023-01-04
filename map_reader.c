@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/04 12:41:28 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/04 14:21:41 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*ill need a tmp fd while i get the actual fd or actually open the map here*/
 char	*ft_free(char *map, char *str)
 {
-	char *ayaya;
+	char	*ayaya;
 
 	ayaya = ft_strjoin(map, str);
 	free (str);
@@ -40,30 +40,60 @@ char	*name_checker(char *map_name)
 }
 
 /* get the .ber map and make it one string/2D map */
-/* then put the joined map in a new 2D array and split it with \n to get literal map */
-char	**ayaya_placeholder(char *map_name)
+/* then put the joined map in a new 2D array and
+			 split it with \n to get literal map */
+char	**read_map(char *map_name)
 {
 	int		fd;
 	char	*str;
 	char	*map;
 	char	**fullmap;
 
-
+	map = ft_strdup("");
 	fd = open(name_checker(map_name), O_RDONLY);
-	printf("%d", fd);
-	while ((str = get_next_line(fd)))
+	if (fd < 0)
 	{
-		map = ft_free(map, str);
-		free (str);
+		ft_printf("Map doesn't exist");
+		exit(1);
 	}
+	while ((str = get_next_line(fd)))
+		map = ft_free(map, str);
 	fullmap = ft_split(map , '\n');
+	close(fd);
 	free (map);
 	return (fullmap);
 }
 
- int main (int argc, char *argv[])
- {
-	(void)argc;
-	ayaya_placeholder(argv[1]);
-	return (0);
- }
+/* Player-Collectable-Exit_checker */
+void	pce_checker(t_mapinfo ayaya)
+{
+	while (ayaya.map[ayaya.y])
+	{
+		if (ft_strchr(ayaya.map[ayaya.y],'P'))
+			ayaya.player_count++;
+		if (ft_strchr(ayaya.map[ayaya.y],'C'))
+			ayaya.collectables_count++;
+		if (ft_strchr(ayaya.map[ayaya.y],'E'))
+			ayaya.exit_count++;
+		ayaya.y++;
+	}
+	if (ayaya.player_count != 1 || ayaya.collectables_count < 1 || ayaya.exit_count != 1)
+	{
+		ft_printf("Invalid map settings");
+		exit(3);
+	}
+}
+/* mc = Map Check*/
+t_mapinfo	*process_map(char *map_name)
+{
+	t_mapinfo	mc;
+
+	mc.y = 0;
+	mc.x = 0;
+	mc.map = read_map(map_name);
+	mc.player_count = 0;
+	mc.collectables_count = 0;
+	mc.exit_count = 0;
+	pce_checker(mc);
+	return(mc);
+}
