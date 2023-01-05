@@ -7,7 +7,9 @@ OBJ = game.o
 
 LIBFT = Utils/libft/
 
-ERRORS = Errors/
+ERRORS = Errors/map_errors_1.c
+
+ERRORS_OBJ = Errors/map_errors_1.o
 
 LIBFT_PATH = Utils/libft/libft.a
 
@@ -27,7 +29,7 @@ $(FT_PRINTF_PATH) :
 	make -C $(FT_PRINTF)
 
 $(NAME): $(OBJ) $(FT_PRINTF_PATH) $(LIBFT_PATH)
-	$(CC) $(OBJ) -LTextures -lmlx $(LIBFT_PATH) $(FT_PRINTF_PATH) -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(OBJ) $(ERRORS_OBJ) -LTextures -lmlx $(LIBFT_PATH) $(FT_PRINTF_PATH) -framework OpenGL -framework AppKit -o $(NAME)
 
 clean :
 	make -C $(LIBFT) clean

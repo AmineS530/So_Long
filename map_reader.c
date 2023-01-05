@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/04 19:00:08 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/05 14:27:06 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,12 @@ char	**read_map(char *map_name)
 	fd = open(name_checker(map_name), O_RDONLY);
 	if (fd < 0)
 		nomap_err();
-	while (str)
-	{
 		str = get_next_line(fd);
+	while (str != NULL)
+	{
 		map = ft_strjoin(map, str);
 		free (str);
+		str = get_next_line(fd);
 	}
 	fullmap = ft_split(map, '\n');
 	close(fd);
@@ -103,9 +104,9 @@ int main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		test = process_map(argv[1]);
-		ft_printf("%d", test.collectables_count);
-		ft_printf("%d", test.player_count);
-		ft_printf("%d", test.exit_count);
+		ft_printf("%d\n", test.collectables_count);
+		ft_printf("%d\n", test.player_count);
+		ft_printf("%d\n", test.exit_count);
 	}
 	return (0);
 }

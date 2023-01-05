@@ -6,12 +6,11 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 18:35:05 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/04 18:46:39 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/05 14:16:54 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
-#include "../Utils/ft_printf/ft_printf.h"
 
 void	invalid_name_err(void)
 {
