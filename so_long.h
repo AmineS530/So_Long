@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/04 17:52:42 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/05 15:28:03 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ typedef struct s_map_data
 	int		exit_count;
 	int		collectables_count;
 	int		res;
+	void	*ptr;
 }			t_mapinfo;
 
-typedef struct s_mygame
-{
-void *ptr;
+/* map_reader */
 
+char	*name_checker(char *map_name);
+char	**read_map(char *map_name);
+void	characters_checker(t_mapinfo *chr);
+void	pces_counter(t_mapinfo *pces);
+t_mapinfo	process_map(char *map_name);
 
-
-
-}
-	t_mygame;
 
 
 #endif

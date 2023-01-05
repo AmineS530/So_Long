@@ -7,9 +7,9 @@ OBJ = game.o
 
 LIBFT = Utils/libft/
 
-ERRORS = Errors/map_errors_1.c
+ERRORS = Errors/errors_1.c
 
-ERRORS_OBJ = Errors/map_errors_1.o
+ERRORS_OBJ = Errors/errors_1.o
 
 LIBFT_PATH = Utils/libft/libft.a
 

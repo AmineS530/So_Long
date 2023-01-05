@@ -3,3 +3,6 @@
 3 map border isn't aligned
 4 Invalid map shape
 5 Invalid map settings
+6 invalid characters
+// to do
+check for border

@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/05 14:27:06 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/05 15:28:33 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ char	*name_checker(char *map_name)
 	size_t	len;
 	char	*ber;
 
-	len = ft_strlen(map_name);
+	ber = ft_strrchr(map_name, '.');
+	if (ber == NULL)
+		invalid_name_err();
+	len = ft_strlen(ber);
 	if (len < 4)
 		invalid_name_err();
-	ber = ft_strrchr(map_name, '.');
 	if (ft_strncmp(ber, ".ber", 4) == 0)
 		return (map_name);
 	return (NULL);
@@ -54,8 +56,32 @@ char	**read_map(char *map_name)
 	return (fullmap);
 }
 
-/* Player-Collectable-Exit-Shape_checker */
-void	pces_checker(t_mapinfo *pces)
+void	characters_checker(t_mapinfo *chr)
+{
+	while (chr->map[chr->y])
+	{
+		chr->x = 0;
+		while (chr->map[chr->y][chr->x])
+		{
+			if (chr->map[chr->y][chr->x] == '0' ||
+				chr->map[chr->y][chr->x] == '1' ||
+				chr->map[chr->y][chr->x] == 'P' ||
+				chr->map[chr->y][chr->x] == 'E' ||
+				chr->map[chr->y][chr->x] == 'C' ||
+				chr->map[chr->y][chr->x] == 'F' )
+			{
+				chr->x++;
+			}
+			else
+				invalid_char();
+		}
+		chr->y++;
+	}
+	chr->y = 0;
+}
+
+/* Player-Collectable-Exit-Shape_counter */
+void	pces_counter(t_mapinfo *pces)
 {
 	pces->res = ft_strlen(pces->map[pces->y]);
 	while (pces->map[pces->y])
@@ -93,7 +119,8 @@ t_mapinfo	process_map(char *map_name)
 	mc.player_count = 0;
 	mc.collectables_count = 0;
 	mc.exit_count = 0;
-	pces_checker(&mc);
+	characters_checker(&mc);
+	pces_counter(&mc);
 	return (mc);
 }
 

@@ -3,7 +3,7 @@
 // int main()
 // {
 
-// 	t_mygame *x
+// 	t_mapinfo *x
 // 	int i
 // 	void *ptr = mlx_init();
 // 	void *win = mlx_new_window(ptr,
