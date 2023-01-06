@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:33:18 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/06 17:42:55 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/06 19:02:26 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	border_checker(t_mapinfo	*data)
 {
 	data->tmp = -1;
-	ft_printf("line count %d \n", data->line_count);
+//	ft_printf("line count %d \n", data->line_count);
 	data->y = 1;
 	while (++data->tmp < data->line_count)
 	{
