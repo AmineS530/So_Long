@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/06 16:33:20 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/06 17:41:30 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,16 +126,47 @@ t_mapinfo	process_map(char *map_name)
 	return (mc);
 }
 
+void	border_checker(t_mapinfo	*data)
+{
+	data->tmp = -1;
+	ft_printf("line count %d \n", data->line_count);
+	data->y = 1;
+	while (++data->tmp < data->line_count)
+	{
+		data->x = 0;
+		if ((data->map[data->tmp][data->x] && data->tmp == 0 && data->x == 0) ||
+			(data->map[data->tmp][data->x] && data->tmp + 1 == data->line_count && data->x == 0))
+		{
+			while (data->x <= data->res && data->map[data->tmp][data->x])
+			{
+				if (data->map[data->tmp][data->x] == '1' )
+					data->x++;
+				else
+					invalid_border_err();
+			}
+		}
+		if ((data->map[data->tmp][data->x] && data->tmp < data->line_count - 1 &&
+			data->x == 0 )|| (data->map[data->tmp][data->x] &&
+				data->tmp < data->line_count - 1 && data->x == data->res))
+		{
+			while (data->y < data->line_count - 1 && data->map[data->y][data->x])
+			{
+				data->x = data->res - 1;
+				if (data->map[data->y][0] == '1' && data->map[data->y][data->x] == '1')
+					data->y++;
+				else if ((data->map[data->y][0] != '1' || data->map[data->y][data->x] != '1'))
+					invalid_border_err();
+			}
+		}
+	}
+}
+
 int main(int argc, char *argv[])
 {
 	t_mapinfo test;
-
-	if (argc == 2)
-	{
 		test = process_map("Maps/test_map.ber");
-		// ft_printf("%d\n", test.collectables_count);
-		// ft_printf("%d\n", test.player_count);
-		// ft_printf("%d\n", test.exit_count);
-	}
+		 ft_printf("%d\n", test.collectables_count);
+		 ft_printf("%d\n", test.player_count);
+		 ft_printf("%d\n", test.exit_count);
 	return (0);
 }

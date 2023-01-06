@@ -6,12 +6,14 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/06 15:51:33 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/06 16:42:47 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+# define NULL 0
+
 # include <mlx.h>
 # include "Utils/libft/get_next_line.h"
 # include "Utils/libft/libft.h"
