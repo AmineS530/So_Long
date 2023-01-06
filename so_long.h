@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/05 15:28:03 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/06 15:51:33 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_map_data
 	int		exit_count;
 	int		collectables_count;
 	int		res;
+	int		line_count;
+	int		tmp;
 	void	*ptr;
 }			t_mapinfo;
 
@@ -37,6 +39,9 @@ void	characters_checker(t_mapinfo *chr);
 void	pces_counter(t_mapinfo *pces);
 t_mapinfo	process_map(char *map_name);
 
+/* map_checker */
+
+void	border_checker(t_mapinfo	*data);
 
 
 #endif

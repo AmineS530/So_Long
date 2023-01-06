@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/05 15:28:33 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/06 16:33:20 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,16 @@ void	characters_checker(t_mapinfo *chr)
 				chr->map[chr->y][chr->x] == '1' ||
 				chr->map[chr->y][chr->x] == 'P' ||
 				chr->map[chr->y][chr->x] == 'E' ||
-				chr->map[chr->y][chr->x] == 'C' ||
-				chr->map[chr->y][chr->x] == 'F' )
+				chr->map[chr->y][chr->x] == 'C')
 			{
 				chr->x++;
 			}
 			else
-				invalid_char();
+				invalid_char_err();
 		}
 		chr->y++;
 	}
+	chr->line_count = chr->y;
 	chr->y = 0;
 }
 
@@ -115,12 +115,14 @@ t_mapinfo	process_map(char *map_name)
 
 	mc.y = 0;
 	mc.x = 0;
+	mc.tmp = 0;
 	mc.map = read_map(map_name);
 	mc.player_count = 0;
 	mc.collectables_count = 0;
 	mc.exit_count = 0;
 	characters_checker(&mc);
 	pces_counter(&mc);
+	border_checker(&mc);
 	return (mc);
 }
 
@@ -130,10 +132,10 @@ int main(int argc, char *argv[])
 
 	if (argc == 2)
 	{
-		test = process_map(argv[1]);
-		ft_printf("%d\n", test.collectables_count);
-		ft_printf("%d\n", test.player_count);
-		ft_printf("%d\n", test.exit_count);
+		test = process_map("Maps/test_map.ber");
+		// ft_printf("%d\n", test.collectables_count);
+		// ft_printf("%d\n", test.player_count);
+		// ft_printf("%d\n", test.exit_count);
 	}
 	return (0);
 }

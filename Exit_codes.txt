@@ -1,8 +1,7 @@
 1 Invalid map name
 2 Map doesn't exist
-3 map border isn't aligned
+3 Map border isn't aligned
 4 Invalid map shape
 5 Invalid map settings
-6 invalid characters
-// to do
-check for border
+6 Invalid characters
+7 Invalid border
