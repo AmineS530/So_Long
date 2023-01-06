@@ -9,7 +9,8 @@ void	map_renderer(t_mapinfo *rdr)
 	int height = 69;
 	void *ptr = mlx_init();
 	void *win = mlx_new_window(ptr,rdr->res * 69, rdr->line_count * 69, "so_long");
-	void *wall = mlx_xpm_file_to_image(ptr, "./Texture_1.xpm", &width , &height );
+	void *wall = mlx_xpm_file_to_image(ptr, "./Textures/Texture_1.xpm", &width , &height );
+	void *backg = mlx_xpm_file_to_image(ptr, "./Textures/bedrock.xpm", &width , &height );
 	while(rdr->map[y])
 	{
 		x = 0;
@@ -17,7 +18,9 @@ void	map_renderer(t_mapinfo *rdr)
 		{
 			if (rdr->map[y][x] == '1' || rdr->map[y][x] == '0')
 				mlx_put_image_to_window(ptr , win , wall , x * 69 , y * 69);
-				x++;
+			if (rdr->map[y][x] == '0')
+				mlx_put_image_to_window(ptr , win , backg , x * 69 , y * 69);
+			x++;
 		}
 		y++;
 	}
