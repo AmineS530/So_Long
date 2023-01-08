@@ -1,33 +1,41 @@
 #include "so_long.h"
 
-
-void	map_renderer(t_mapinfo *rdr)
+void	render_objs(t_mapinfo *objs)
 {
-	int x;
-	int y = 0;
-	int width = 69;
-	int height = 69;
-	void *ptr = mlx_init();
-	void *win = mlx_new_window(ptr,rdr->res * 69, rdr->line_count * 69, "so_long");
-	void *wall = mlx_xpm_file_to_image(ptr, "./Textures/Texture_1.xpm", &width , &height );
-	void *coin = mlx_xpm_file_to_image(ptr, "./Textures/Treasure.xpm", &width , &height );
-	void *backg = mlx_xpm_file_to_image(ptr, "./Textures/bedrock.xpm", &width , &height );
-	while(rdr->map[y])
+	objs->width = 69;
+	objs->height = 69;
+	objs->wall = mlx_xpm_file_to_image(objs->ptr, "./Textures/Texture_1.xpm", &objs->width, &objs->height);
+	objs->player = mlx_xpm_file_to_image(objs->ptr, "./Textures/move01.xpm", &objs->width, &objs->height);
+	objs->coin = mlx_xpm_file_to_image(objs->ptr, "./Textures/ender_eye.xpm", &objs->width, &objs->height);
+	objs->background = mlx_xpm_file_to_image(objs->ptr, "./Textures/Texture_2.xpm", &objs->width, &objs->height);
+	objs->y = 0;
+	while(objs->map[objs->y])
 	{
-		x = 0;
-		while(rdr->map[y][x])
+		objs->x = 0;
+		while(objs->map[objs->y][objs->x])
 		{
-			if (rdr->map[y][x] == '1' || rdr->map[y][x] == '0')
-				mlx_put_image_to_window(ptr , win , wall , x * 69 , y * 69);
-			if (rdr->map[y][x] == '0')
-				mlx_put_image_to_window(ptr , win , backg , x * 69 , y * 69);
-			if (rdr->map[y][x] == 'C')
-				mlx_put_image_to_window(ptr , win , coin , x * 69 , y * 69);
-			x++;
+			if (objs->map[objs->y][objs->x] == 'P' || objs->map[objs->y][objs->x] == 'C' ||
+				objs->map[objs->y][objs->x] == 'E' || objs->map[objs->y][objs->x] == '0')
+				mlx_put_image_to_window(objs->ptr , objs->win , objs->background , objs->x * 69, objs->y * 69);
+			if (objs->map[objs->y][objs->x] == '1')
+				mlx_put_image_to_window(objs->ptr , objs->win , objs->wall , objs->x * 69, objs->y * 69);
+			if (objs->map[objs->y][objs->x] == 'P')
+				mlx_put_image_to_window(objs->ptr , objs->win , objs->player , objs->x * 69, objs->y * 69);
+			if (objs->map[objs->y][objs->x] == 'C')
+				mlx_put_image_to_window(objs->ptr , objs->win , objs->coin , objs->x * 69, objs->y * 69);
+			objs->x++;
 		}
-		y++;
+		objs->y++;
 	}
-	mlx_loop(ptr);
+}
+
+void	map_renderer(t_mapinfo rdr)
+{
+	rdr.ptr = mlx_init();
+	rdr.win = mlx_new_window(rdr.ptr, rdr.res * 69, rdr.line_count * 69, "so_long");
+
+	render_objs(&rdr);
+	mlx_loop(rdr.ptr);
 }
 
 int main(int argc, char *argv[])
@@ -36,7 +44,8 @@ int main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		rdr = process_map(argv[1]);
-		map_renderer(&rdr);
+		map_renderer(rdr);
 	}
+	ft_printf("you didnt select a map you retard");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/06 19:00:49 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/08 14:20:09 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	pces_counter(t_mapinfo *pces)
 		pces->x = 0;
 		while (pces->map[pces->y][pces->x])
 		{
-			if (pces->res != ft_strlen(pces->map[pces->y]))
+			if (pces->res != (int)ft_strlen(pces->map[pces->y]))
 				map_border_err();
 			if (pces->map[pces->y][pces->x] == 'P')
 				pces->player_count++;

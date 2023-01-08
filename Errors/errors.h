@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 14:45:39 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/06 14:41:18 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/08 14:29:41 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,5 @@ void	invalid_settings_err(void);
 /* errors2 */
 void	invalid_char_err(void);
 void	invalid_border_err(void);
-
-
-
-
 
 #endif

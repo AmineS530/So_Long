@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/06 16:42:47 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/08 15:01:21 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,18 @@ typedef struct s_map_data
 	int		res;
 	int		line_count;
 	int		tmp;
+// graphic related vars
+	int		height;
+	int		width;
 	void	*ptr;
+	void	*win;
+	void	*wall;
+	void	*player;
+	void	*coin;
+	void	*background;
 }			t_mapinfo;
 
 /* map_reader */
-
 char	*name_checker(char *map_name);
 char	**read_map(char *map_name);
 void	characters_checker(t_mapinfo *chr);
@@ -42,8 +49,10 @@ void	pces_counter(t_mapinfo *pces);
 t_mapinfo	process_map(char *map_name);
 
 /* map_checker */
-
 void	border_checker(t_mapinfo	*data);
 
+/* map_renderer */
+void	render_objs(t_mapinfo *objs);
+void	map_render(t_mapinfo *rdr);
 
 #endif
