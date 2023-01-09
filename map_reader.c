@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/08 14:20:09 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/09 14:46:41 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ char	**read_map(char *map_name)
 	fd = open(name_checker(map_name), O_RDONLY);
 	if (fd < 0)
 		nomap_err();
-		str = get_next_line(fd);
+	str = get_next_line(fd);
+	if (str == NULL)
+		emptymap_err();
 	while (str != NULL)
 	{
 		map = ft_strjoin(map, str);

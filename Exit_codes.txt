@@ -3,5 +3,6 @@
 3 Map border isn't aligned
 4 Invalid map shape
 5 Invalid map settings
-6 Invalid characters
-7 Invalid border
+6 Empty map
+7 Invalid characters
+8 Invalid border
