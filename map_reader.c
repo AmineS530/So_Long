@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/10 17:39:11 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/10 19:24:00 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,17 @@ char	**read_map(char *map_name)
 	str = get_next_line(fd);
 	if (str == NULL)
 		emptymap_err();
-	map = ft_strjoin("111111\n", "111111\n");
 	while (str != NULL)
 	{
-		free (str);
+		map = ft_strjoin(map, str);
 		str = get_next_line(fd);
 	}
+	free(str);
 	fullmap = ft_split(map, '\n');
 	close(fd);
 	free (map);
 	return (fullmap);
 }
-
-char	*free_joined(char *map, char *str)
-{
-	
-
-}
-
 
 /* Player-Collectable-Exit-Shape_counter */
 void	pces_counter(t_mapinfo *pces)
@@ -94,7 +87,7 @@ void	pces_counter(t_mapinfo *pces)
 }
 /* mc = Map Check*/
 
-t_mapinfo	process_map(char *map_name)
+t_mapinfo	process_map(char	*map_name)
 {
 	t_mapinfo	mc;
 
@@ -106,8 +99,8 @@ t_mapinfo	process_map(char *map_name)
 	mc.collectables_count = 0;
 	mc.exit_count = 0;
 	characters_checker(&mc);
-	//pces_counter(&mc);
-	//border_checker(&mc);
+	pces_counter(&mc);
+	border_checker(&mc);
 	return (mc);
 }
 
@@ -116,14 +109,18 @@ int main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		t_mapinfo test;
-		int y = -1;
+		int y = 0;
 		test = process_map(argv[1]);
 		 ft_printf("%d\n", test.collectables_count);
 		 ft_printf("%d\n", test.player_count);
 		 ft_printf("%d\n", test.exit_count);
-		 while (test.map[++y])
+		 while (test.map[y])
+		 {
+			ft_printf("%s \n",test.map[y]);
 			free(test.map[y]);
-		 free(test.map);
+			y++;
+		 }
+		free(test.map);
 		 while (1)
 		 {
 			/* code */

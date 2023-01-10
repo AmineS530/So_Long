@@ -22,7 +22,7 @@ FT_PRINTF = Utils/ft_printf/
 
 FT_PRINTF_PATH = Utils/ft_printf/libftprintf.a
 
-all : $(NAME) $(LIBFT) $(FT_PRINTF)
+all : $(NAME) $(FT_PRINTF_PATH) $(LIBFT_PATH)
 
 %.o: %.c
 	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
