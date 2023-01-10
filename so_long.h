@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/09 14:49:13 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/10 15:15:14 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 # include "Utils/libft/libft.h"
 # include "Utils/ft_printf/ft_printf.h"
 # include"Errors/errors.h"
+# define RED "\e[31m"
+# define YELLOW "\e[33m"
+# define GREEN "\e[32m"
+# define CYAN "\e[36m"
+# define DEFAULT "\033[0m"
 typedef struct s_map_data
 {
 	int		y;

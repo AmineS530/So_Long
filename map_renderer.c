@@ -46,6 +46,6 @@ int main(int argc, char *argv[])
 		rdr = process_map(argv[1]);
 		map_renderer(rdr);
 	}
-	ft_printf("you didnt select a map you retard");
+	ft_printf("I quote \"%sYou didn't include a map, YOU DUCK%s\",%s Yuki%s", YELLOW, DEFAULT, CYAN, DEFAULT);
 	return (0);
 }
