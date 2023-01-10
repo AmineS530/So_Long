@@ -39,7 +39,7 @@ $(NAME): $(OBJ) $(ERRORS_OBJ) $(FT_PRINTF_PATH) $(LIBFT_PATH)
 clean :
 	make -C $(LIBFT) clean
 	make -C $(FT_PRINTF) clean
-	rm -rf $(OBJ)
+	rm -rf $(OBJ) $(ERRORS_OBJ)
 
 fclean : clean
 	make -C $(LIBFT) fclean
