@@ -1,15 +1,20 @@
 
 NAME = so_long
 
-SRC = game.c
+SRC = map_reader.c \
+		map_checker.c \
+		map_renderer.c \
 
-OBJ = game.o
+
+OBJ = $(SRC:.c=.o)
 
 LIBFT = Utils/libft/
 
-ERRORS = Errors/errors_1.c
+ERRORS = Errors/errors_1.c \
+			Errors/errors_2.c \
 
-ERRORS_OBJ = Errors/errors_1.o
+
+ERRORS_OBJ = $(ERRORS:.c=.o)
 
 LIBFT_PATH = Utils/libft/libft.a
 
@@ -28,7 +33,7 @@ $(LIBFT_PATH) :
 $(FT_PRINTF_PATH) :
 	make -C $(FT_PRINTF)
 
-$(NAME): $(OBJ) $(FT_PRINTF_PATH) $(LIBFT_PATH)
+$(NAME): $(OBJ) $(ERRORS_OBJ) $(FT_PRINTF_PATH) $(LIBFT_PATH)
 	$(CC) $(OBJ) $(ERRORS_OBJ) -LTextures -lmlx $(LIBFT_PATH) $(FT_PRINTF_PATH) -framework OpenGL -framework AppKit -o $(NAME)
 
 clean :
