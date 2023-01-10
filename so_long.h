@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/10 16:23:37 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/10 17:38:53 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ typedef struct s_map_data
 /* map_reader */
 char			*name_checker(char *map_name);
 char			**read_map(char *map_name);
-void			characters_checker(t_mapinfo *chr);
+char			*free_joined(char *map, char *str);
 void			pces_counter(t_mapinfo *pces);
 t_mapinfo		process_map(char *map_name);
 
 /* map_checker */
+void			characters_checker(t_mapinfo *chr);
 void			border_checker(t_mapinfo	*data);
 void			check_firstnlast(t_mapinfo *data);
 void			check_sides(t_mapinfo *data);
 
 /* map_renderer */
 void			render_objs(t_mapinfo *objs);
-t_mapinfo		*map_renderer(t_mapinfo rdr);
-t_mapinfo		*free_frame(t_mapinfo *info);
+t_mapinfo		map_renderer(t_mapinfo rdr);
 
 #endif

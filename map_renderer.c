@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:34:02 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/10 16:42:47 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/10 17:11:23 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ void	render_objs(t_mapinfo *objs)
 					objs->x * 69, objs->y * 69);
 			objs->x++;
 		}
+		free (objs->map[objs->y]);
 		objs->y++;
 	}
+		free (objs->map);
 }
 
-t_mapinfo	*map_renderer(t_mapinfo rdr)
+t_mapinfo	map_renderer(t_mapinfo rdr)
 {
 	rdr.ptr = mlx_init();
 	rdr.width = 69;
@@ -57,32 +59,25 @@ t_mapinfo	*map_renderer(t_mapinfo rdr)
 	rdr.backg = mlx_xpm_file_to_image(rdr.ptr, "./Textures/Texture_2.xpm",
 			&rdr.width, &rdr.height);
 	render_objs(&rdr);
-	rdr.next_frame = free_frame(&rdr);
 	mlx_loop(rdr.ptr);
-	return(rdr.next_frame);
+	return(rdr);
 }
 
-t_mapinfo	*free_frame(t_mapinfo *info)
-{
-	int y;
+// int	main(int argc, char *argv[])
+// {
+// 	t_mapinfo	rdr;
 
-	y = 0;
-	while (info->map[y])
-		free(info->map[y++]);
-	free (info->map);
-	return (info);
-}
+// 	if (argc == 2)
+// 	{
+// 		rdr = process_map(rdr);
+// 		while (1)
+// 		{
+// 			/* code */
+// 		}
 
-int	main(int argc, char *argv[])
-{
-	t_mapinfo	rdr;
-
-	if (argc == 2)
-	{
-		rdr = process_map(argv[1]);
-		map_renderer(rdr);
-	}
-	ft_printf("I quote \"%sYou didn't include a map, YOU DUCK%s\",%s Yuki%s",
-		YELLOW, DEFAULT, CYAN, DEFAULT);
-	return (0);
-}
+// 		//map_renderer(rdr);
+// 	}
+// 	ft_printf("I quote \"%sYou didn't include a map, YOU DUCK%s\",%s Yuki%s",
+// 		YELLOW, DEFAULT, CYAN, DEFAULT);
+// 	return (0);
+// }

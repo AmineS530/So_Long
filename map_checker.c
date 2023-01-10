@@ -6,12 +6,36 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:33:18 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/10 15:58:25 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/10 17:36:51 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
  /* check border & check for valid path */
+
+void	characters_checker(t_mapinfo *chr)
+{
+	while (chr->map[chr->y])
+	{
+		chr->x = 0;
+		while (chr->map[chr->y][chr->x])
+		{
+			if (chr->map[chr->y][chr->x] == '0' ||
+				chr->map[chr->y][chr->x] == '1' ||
+				chr->map[chr->y][chr->x] == 'P' ||
+				chr->map[chr->y][chr->x] == 'E' ||
+				chr->map[chr->y][chr->x] == 'C')
+			{
+				chr->x++;
+			}
+			else
+				invalid_char_err();
+		}
+		chr->y++;
+	}
+	chr->line_count = chr->y;
+	chr->y = 0;
+}
 
 void	border_checker(t_mapinfo	*data)
 {

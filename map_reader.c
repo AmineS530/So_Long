@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/09 14:46:41 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/10 17:39:11 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ char	**read_map(char *map_name)
 	str = get_next_line(fd);
 	if (str == NULL)
 		emptymap_err();
+	map = ft_strjoin("111111\n", "111111\n");
 	while (str != NULL)
 	{
-		map = ft_strjoin(map, str);
 		free (str);
 		str = get_next_line(fd);
 	}
@@ -58,29 +58,12 @@ char	**read_map(char *map_name)
 	return (fullmap);
 }
 
-void	characters_checker(t_mapinfo *chr)
+char	*free_joined(char *map, char *str)
 {
-	while (chr->map[chr->y])
-	{
-		chr->x = 0;
-		while (chr->map[chr->y][chr->x])
-		{
-			if (chr->map[chr->y][chr->x] == '0' ||
-				chr->map[chr->y][chr->x] == '1' ||
-				chr->map[chr->y][chr->x] == 'P' ||
-				chr->map[chr->y][chr->x] == 'E' ||
-				chr->map[chr->y][chr->x] == 'C')
-			{
-				chr->x++;
-			}
-			else
-				invalid_char_err();
-		}
-		chr->y++;
-	}
-	chr->line_count = chr->y;
-	chr->y = 0;
+	
+
 }
+
 
 /* Player-Collectable-Exit-Shape_counter */
 void	pces_counter(t_mapinfo *pces)
@@ -123,17 +106,32 @@ t_mapinfo	process_map(char *map_name)
 	mc.collectables_count = 0;
 	mc.exit_count = 0;
 	characters_checker(&mc);
-	pces_counter(&mc);
-	border_checker(&mc);
+	//pces_counter(&mc);
+	//border_checker(&mc);
 	return (mc);
 }
 
-// int main(int argc, char *argv[])
-// {
-// 	t_mapinfo test;
-// 		test = process_map("Maps/test_map.ber");
-// 		 ft_printf("%d\n", test.collectables_count);
-// 		 ft_printf("%d\n", test.player_count);
-// 		 ft_printf("%d\n", test.exit_count);
-// 	return (0);
-// }
+int main(int argc, char *argv[])
+{
+	if (argc == 2)
+	{
+		t_mapinfo test;
+		int y = -1;
+		test = process_map(argv[1]);
+		 ft_printf("%d\n", test.collectables_count);
+		 ft_printf("%d\n", test.player_count);
+		 ft_printf("%d\n", test.exit_count);
+		 while (test.map[++y])
+			free(test.map[y]);
+		 free(test.map);
+		 while (1)
+		 {
+			/* code */
+		 }
+
+	}
+	else
+	ft_printf("I quote \"%sYou didn't include a map, YOU DUCK%s\",%s Yuki%s",
+		YELLOW, DEFAULT, CYAN, DEFAULT);
+	return (0);
+}
