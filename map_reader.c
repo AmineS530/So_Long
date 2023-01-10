@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/10 19:24:00 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/10 20:13:17 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,31 +104,22 @@ t_mapinfo	process_map(char	*map_name)
 	return (mc);
 }
 
-int main(int argc, char *argv[])
-{
-	if (argc == 2)
-	{
-		t_mapinfo test;
-		int y = 0;
-		test = process_map(argv[1]);
-		 ft_printf("%d\n", test.collectables_count);
-		 ft_printf("%d\n", test.player_count);
-		 ft_printf("%d\n", test.exit_count);
-		 while (test.map[y])
-		 {
-			ft_printf("%s \n",test.map[y]);
-			free(test.map[y]);
-			y++;
-		 }
-		free(test.map);
-		 while (1)
-		 {
-			/* code */
-		 }
-
-	}
-	else
-	ft_printf("I quote \"%sYou didn't include a map, YOU DUCK%s\",%s Yuki%s",
-		YELLOW, DEFAULT, CYAN, DEFAULT);
-	return (0);
-}
+// int main(int argc, char *argv[])
+// {
+// 	if (argc == 2)
+// 	{
+// 		t_mapinfo test;
+// 		int y = 0;
+// 		test = process_map(argv[1]);
+// 		 ft_printf("%d\n", test.collectables_count);
+// 		 ft_printf("%d\n", test.player_count);
+// 		 ft_printf("%d\n", test.exit_count);
+// 		 while (test.map[y])
+// 			ft_printf("%s \n",test.map[y++]);
+// 		 while (1)
+// 	}
+// 	else
+// 	ft_printf("I quote \"%sYou didn't include a map, YOU DUCK%s\",%s Yuki%s",
+// 		YELLOW, DEFAULT, CYAN, DEFAULT);
+// 	return (0);
+// }

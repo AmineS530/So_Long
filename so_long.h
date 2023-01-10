@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/10 17:38:53 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/10 20:20:50 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ void			check_sides(t_mapinfo *data);
 
 /* map_renderer */
 void			render_objs(t_mapinfo *objs);
-t_mapinfo		map_renderer(t_mapinfo rdr);
+t_mapinfo		*map_renderer(t_mapinfo rdr);
 
 #endif
