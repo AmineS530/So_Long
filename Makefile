@@ -1,7 +1,8 @@
 
 NAME = so_long
 
-SRC = map_reader.c \
+SRC = game.c \
+		map_reader.c \
 		map_checker.c \
 		map_renderer.c \
 

@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/10 20:13:17 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/11 11:39:55 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,27 +58,35 @@ char	**read_map(char *map_name)
 	return (fullmap);
 }
 
+void	characters_checker(t_mapinfo *chr)
+{
+	while (chr->map[chr->y])
+	{
+		chr->x = 0;
+		while (chr->map[chr->y][chr->x])
+		{
+			if (chr->map[chr->y][chr->x] == '0' ||
+				chr->map[chr->y][chr->x] == '1' ||
+				chr->map[chr->y][chr->x] == 'P' ||
+				chr->map[chr->y][chr->x] == 'E' ||
+				chr->map[chr->y][chr->x] == 'C')
+			{
+				chr->x++;
+			}
+			else
+				invalid_char_err();
+		}
+		chr->y++;
+	}
+	chr->line_count = chr->y;
+	chr->y = 0;
+}
+
 /* Player-Collectable-Exit-Shape_counter */
 void	pces_counter(t_mapinfo *pces)
 {
 	pces->res = ft_strlen(pces->map[pces->y]);
-	while (pces->map[pces->y])
-	{
-		pces->x = 0;
-		while (pces->map[pces->y][pces->x])
-		{
-			if (pces->res != (int)ft_strlen(pces->map[pces->y]))
-				map_border_err();
-			if (pces->map[pces->y][pces->x] == 'P')
-				pces->player_count++;
-			if (pces->map[pces->y][pces->x] == 'C')
-				pces->collectables_count++;
-			if (pces->map[pces->y][pces->x] == 'E')
-				pces->exit_count++;
-			pces->x++;
-		}
-		pces->y++;
-	}
+	
 	if (pces->res <= pces->y)
 		invalid_shape_err();
 	if (pces->player_count != 1 || pces->collectables_count < 1

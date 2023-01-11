@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:34:02 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/10 20:41:56 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/11 11:45:32 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,24 +57,34 @@ t_mapinfo	*map_renderer(t_mapinfo rdr)
 	rdr.backg = mlx_xpm_file_to_image(rdr.ptr, "./Textures/Texture_2.xpm",
 			&rdr.width, &rdr.height);
 	rdr.next_frame = &rdr;
+	set_cords(&rdr);
 	render_objs(rdr.next_frame);
 	mlx_loop(rdr.ptr);
 	return (rdr.next_frame);
 }
 
-int	main(int argc, char *argv[])
+void	set_cords(t_mapinfo *xy)
 {
-	t_mapinfo	rdr;
-
-	if (argc == 2)
+	xy->y = 0;
+	while (xy->map[xy->y])
 	{
-		rdr = process_map(argv[1]);
-		map_renderer(rdr);
-		while (1)
-		{}
+		xy->x = 0;
+		while (xy->map[xy->y][xy->x])
+		{
+			if (xy->map[xy->y][xy->x] == 'P')
+				{
+					xy->player_x = xy->x;
+					xy->player_y = xy->y;
+				}
+			if (xy->map[xy->y][xy->x] == 'C')
+				xy->collectables_count++;
+			if (xy->map[xy->y][xy->x] == 'E')
+				{
+					xy->exit_x = xy->x;
+					xy->exit_y = xy->y;
+				}
+			xy->x++;
+		}
+		xy->y++;
 	}
-	else
-		ft_printf("I quote \"%sYou didn't include a map, YOU DUCK%s\",%s Yuki%s",
-			YELLOW, DEFAULT, CYAN, DEFAULT);
-	return (0);
 }
