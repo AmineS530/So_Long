@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/11 11:48:43 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/11 13:21:54 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "Utils/libft/libft.h"
 # include "Utils/ft_printf/ft_printf.h"
 # include"Errors/errors.h"
+# define RES 69
 # define RED "\e[31m"
 # define YELLOW "\e[33m"
 # define GREEN "\e[32m"
@@ -41,13 +42,14 @@ typedef struct s_map_data
 	void				*ptr;
 	void				*win;
 	void				*wall;
-	void				*player;
-	int					*player_x;
-	int					*player_y;
-	int					*exit_x;
-	int					*exit_y;
 	void				*coin;
 	void				*backg;
+	void				*player;
+	int					player_x;
+	int					player_y;
+	int					exit_x;
+	int					exit_y;
+	int					moves_counter;
 	struct s_map_data	*next_frame;
 }						t_mapinfo;
 
@@ -68,5 +70,10 @@ void			render_objs(t_mapinfo *objs);
 t_mapinfo		*map_renderer(t_mapinfo rdr);
 void			set_cords(t_mapinfo *xy);
 
+/* movements */
+int	check_for_walls(t_mapinfo *cords, int y, int x);
+t_mapinfo	*ft_movements_ver(t_mapinfo *cords, int dir);
+t_mapinfo	*ft_movements_hor(t_mapinfo *cords, int dir);
+t_mapinfo	*ft_input(t_mapinfo *cords, int keycode);
 
 #endif
