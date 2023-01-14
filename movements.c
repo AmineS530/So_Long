@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:52:38 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/11 13:22:34 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/14 17:48:29 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,31 @@
 int	check_for_walls(t_mapinfo *cords, int y, int x)
 {
 	if (cords->map[y][x] == '1')
-		retrun (0);
+		return (0);
 	return (1);
 }
 
-t_mapinfo	*ft_movements_ver(t_mapinfo *cords, int dir)
+int	ft_movements_ver(t_mapinfo *cords, int dir)
 {
 	int	y;
 	int x;
 
 	y = cords->player_y;
 	x = cords->player_x;
-	if (check_for_walls(cords, y + dir , x))
+	if (check_for_walls(cords, (y + dir) , x))
 	{
+		mlx_destroy_image(cords->ptr, cords->player);
+		cords->map[cords->player_y][cords->player_x] = '0';
 		cords->player_y += dir;
+		cords->map[cords->player_y][cords->player_x] = 'P';
 		cords->moves_counter++;
+		render_objs(cords);
 	}
-	else if (check_for_walls(cords, y, (x + dir)))
-	{
-		cords->player_x += dir;
-		cords->moves_counter++;
-	}
-	return (cords);
+	printf("%s", cords->map[cords->y]);
+	return (cords->player_y);
 }
 
-t_mapinfo	*ft_movements_hor(t_mapinfo *cords, int dir)
+int	ft_movements_hor(t_mapinfo *cords, int dir)
 {
 	int	y;
 	int x;
@@ -48,28 +48,31 @@ t_mapinfo	*ft_movements_hor(t_mapinfo *cords, int dir)
 	x = cords->player_x;
 	if (check_for_walls(cords, y, (x + dir)))
 	{
+		cords->map[cords->player_y][cords->player_x] = '0';
 		cords->player_x += dir;
+		cords->map[cords->player_y][cords->player_x] = 'P';
 		cords->moves_counter++;
 	}
-	return (cords);
+	return (cords->player_x);
 }
 
 
-t_mapinfo	*ft_input(t_mapinfo *cords, int keycode)
+int	ft_input(int keycode, t_mapinfo *cords)
 {
-	if (keycode == 53)
-		{
-			mlx_destroy_window(cords->ptr, cords->win);
-			ft_printf("%s You have closed teh game %s", RED, DEFAULT);
-			exit(0);
-		}
+
 	if (keycode == 1)
-		return (ft_movements_ver(game_map, 1));
-	if (keycode == 13)
-		return (ft_movements_ver(game_map, -1));
-	if (keycode == 2)
-		return (ft_movements_hor(game_map, 1));
-	if (keycode == 0)
-		return (ft_movements_hor(game_map, -1));
-	return (game_map);
+		return (ft_movements_ver(cords, 1));
+	else if (keycode == 13)
+		return (ft_movements_ver(cords, -1));
+	else if (keycode == 2)
+		return (ft_movements_hor(cords, 1));
+	else if (keycode == 0)
+		return (ft_movements_hor(cords, -1));
+	else if (keycode == 53)
+	{
+		mlx_destroy_window(cords->ptr, cords->win);
+		ft_printf("%s You have closed the game %s", RED, DEFAULT);
+		exit(0);
+	}
+	return (0);
 }

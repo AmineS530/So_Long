@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/11 13:21:54 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/14 17:43:26 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void			set_cords(t_mapinfo *xy);
 
 /* movements */
 int	check_for_walls(t_mapinfo *cords, int y, int x);
-t_mapinfo	*ft_movements_ver(t_mapinfo *cords, int dir);
-t_mapinfo	*ft_movements_hor(t_mapinfo *cords, int dir);
-t_mapinfo	*ft_input(t_mapinfo *cords, int keycode);
+int	ft_movements_ver(t_mapinfo *cords, int dir);
+int	ft_movements_hor(t_mapinfo *cords, int dir);
+int	ft_input(int keycode, t_mapinfo *cords);
 
 #endif

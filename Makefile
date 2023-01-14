@@ -5,7 +5,7 @@ SRC = game.c \
 		map_reader.c \
 		map_checker.c \
 		map_renderer.c \
-
+		movements.c \
 
 OBJ = $(SRC:.c=.o)
 

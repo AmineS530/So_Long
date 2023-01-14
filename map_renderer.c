@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:34:02 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/11 13:31:16 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/14 17:50:36 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	render_objs(t_mapinfo *objs)
 					objs->x * RES, objs->y * RES);
 			if (objs->map[objs->y][objs->x] == 'P')
 				mlx_put_image_to_window(objs->ptr, objs->win, objs->player,
-					objs->x * RES, objs->y * RES);
+					objs->player_x * RES, objs->player_y * RES);
 			if (objs->map[objs->y][objs->x] == 'C')
 				mlx_put_image_to_window(objs->ptr, objs->win, objs->coin,
 					objs->x * RES, objs->y * RES);
@@ -59,8 +59,8 @@ t_mapinfo	*map_renderer(t_mapinfo rdr)
 			&rdr.width, &rdr.height);
 	rdr.next_frame = &rdr;
 	render_objs(rdr.next_frame);
+	mlx_hook(rdr.win, 2, 1L<<0 , ft_input, &rdr);
 	mlx_loop(rdr.ptr);
-	mlx_hook(rdr.win, )
 	return (rdr.next_frame);
 }
 
