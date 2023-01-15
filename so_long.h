@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/14 17:43:26 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/15 22:22:09 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,11 @@ typedef struct s_map_data
 	void				*wall;
 	void				*coin;
 	void				*backg;
+	void				*exit;
 	void				*player;
+	void				*player_up;
+	void				*player_right;
+	void				*player_left;
 	int					player_x;
 	int					player_y;
 	int					exit_x;
@@ -64,11 +68,12 @@ t_mapinfo		process_map(char *map_name);
 void			border_checker(t_mapinfo	*data);
 void			check_firstnlast(t_mapinfo *data);
 void			check_sides(t_mapinfo *data);
+void			set_cords(t_mapinfo *xy);
 
 /* map_renderer */
 void			render_objs(t_mapinfo *objs);
-t_mapinfo		*map_renderer(t_mapinfo rdr);
-void			set_cords(t_mapinfo *xy);
+t_mapinfo		map_renderer(t_mapinfo rdr);
+void	ft_put_xpm(t_mapinfo *files);
 
 /* movements */
 int	check_for_walls(t_mapinfo *cords, int y, int x);

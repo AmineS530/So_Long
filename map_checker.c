@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:33:18 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/11 11:27:44 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/15 21:49:18 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,31 @@ void	check_sides(t_mapinfo *data)
 			data->y++;
 		else if ((data->map[data->y][0] != '1' || data->map[data->y][data->x] != '1'))
 			invalid_border_err();
+	}
+}
+
+void	set_cords(t_mapinfo *xy)
+{
+	xy->y = 0;
+	while (xy->map[xy->y])
+	{
+		xy->x = 0;
+		while (xy->map[xy->y][xy->x])
+		{
+			if (xy->map[xy->y][xy->x] == 'P')
+				{
+					xy->player_x = xy->x;
+					xy->player_y = xy->y;
+				}
+			if (xy->map[xy->y][xy->x] == 'C')
+				xy->collectables_count++;
+			if (xy->map[xy->y][xy->x] == 'E')
+				{
+					xy->exit_x = xy->x;
+					xy->exit_y = xy->y;
+				}
+			xy->x++;
+		}
+		xy->y++;
 	}
 }
