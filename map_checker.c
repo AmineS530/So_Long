@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:33:18 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/15 21:49:18 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/15 23:46:55 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ void	set_cords(t_mapinfo *xy)
 					xy->player_x = xy->x;
 					xy->player_y = xy->y;
 				}
-			if (xy->map[xy->y][xy->x] == 'C')
-				xy->collectables_count++;
 			if (xy->map[xy->y][xy->x] == 'E')
 				{
 					xy->exit_x = xy->x;

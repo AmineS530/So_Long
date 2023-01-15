@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:34:02 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/15 22:28:05 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/16 00:32:18 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void	render_objs(t_mapinfo *sy)
 		sy->x = 0;
 		while (sy->map[sy->y][sy->x])
 		{
+			if (sy->map[sy->y][sy->x] == '1')
+				mlx_put_image_to_window(sy->ptr, sy->win, sy->wall,
+					sy->x * RES, sy->y * RES);
 			if (sy->map[sy->y][sy->x] == 'P' || sy->map[sy->y][sy->x] == 'C' ||
 				sy->map[sy->y][sy->x] == 'E' || sy->map[sy->y][sy->x] == '0')
 				mlx_put_image_to_window(sy->ptr, sy->win, sy->backg,
@@ -41,15 +44,13 @@ void	render_objs(t_mapinfo *sy)
 			if (sy->map[sy->y][sy->x] == 'E')
 				mlx_put_image_to_window(sy->ptr, sy->win, sy->exit,
 					sy->x * RES, sy->y * RES);
-			if (sy->map[sy->y][sy->x] == '1')
-				mlx_put_image_to_window(sy->ptr, sy->win, sy->wall,
-					sy->x * RES, sy->y * RES);
 			if (sy->map[sy->y][sy->x] == 'P')
 				mlx_put_image_to_window(sy->ptr, sy->win, sy->player,
 					sy->player_x * RES, sy->player_y * RES);
 			if (sy->map[sy->y][sy->x] == 'C')
 				mlx_put_image_to_window(sy->ptr, sy->win, sy->coin,
 					sy->x * RES, sy->y * RES);
+
 			sy->x++;
 		}
 		sy->y++;
@@ -58,7 +59,7 @@ void	render_objs(t_mapinfo *sy)
 
 void	ft_put_xpm(t_mapinfo *fs)
 {
-		fs->win = mlx_new_window(fs->ptr, fs->res * RES,
+	fs->win = mlx_new_window(fs->ptr, fs->res * RES,
 			fs->line_count * RES, "so_long");
 	fs->exit = mlx_xpm_file_to_image(fs->ptr, "./Textures/End_portal.xpm",
 			&fs->width, &fs->height);
@@ -70,9 +71,9 @@ void	ft_put_xpm(t_mapinfo *fs)
 			&fs->width, &fs->height);
 	fs->player_right = mlx_xpm_file_to_image(fs->ptr,
 			"./Textures/look_right.xpm", &fs->width, &fs->height);
-	fs->player = fs->player_right;
 	fs->coin = mlx_xpm_file_to_image(fs->ptr, "./Textures/ender_eye_1.xpm",
 			&fs->width, &fs->height);
 	fs->backg = mlx_xpm_file_to_image(fs->ptr, "./Textures/Texture_2.xpm",
 			&fs->width, &fs->height);
+	fs->player = fs->player_right;
 }

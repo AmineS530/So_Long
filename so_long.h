@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/15 22:22:09 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/16 00:37:43 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ typedef struct s_map_data
 	int					exit_x;
 	int					exit_y;
 	int					moves_counter;
-	struct s_map_data	*next_frame;
 }						t_mapinfo;
 
 /* map_reader */
@@ -76,9 +75,9 @@ t_mapinfo		map_renderer(t_mapinfo rdr);
 void	ft_put_xpm(t_mapinfo *files);
 
 /* movements */
-int	check_for_walls(t_mapinfo *cords, int y, int x);
-int	ft_movements_ver(t_mapinfo *cords, int dir);
-int	ft_movements_hor(t_mapinfo *cords, int dir);
+int	check_for_walls(t_mapinfo *cords, int y, int x, int coin);
+int	ft_movements_ver(t_mapinfo *cords, int dir, int *coins_counter);
+int	ft_movements_hor(t_mapinfo *cords, int dir, int *coins_counter);
 int	ft_input(int keycode, t_mapinfo *cords);
 
 #endif

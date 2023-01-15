@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/11 12:38:06 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/15 23:49:11 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ char	**read_map(char *map_name)
 
 void	characters_checker(t_mapinfo *chr)
 {
+	chr->y = 0;
 	while (chr->map[chr->y])
 	{
 		chr->x = 0;
@@ -70,21 +71,19 @@ void	characters_checker(t_mapinfo *chr)
 				chr->map[chr->y][chr->x] == 'P' ||
 				chr->map[chr->y][chr->x] == 'E' ||
 				chr->map[chr->y][chr->x] == 'C')
-			{
-				chr->x++;
-			}
+					chr->x++;
 			else
 				invalid_char_err();
 		}
 		chr->y++;
 	}
 	chr->line_count = chr->y;
-	chr->y = 0;
 }
 
 /* Player-Collectable-Exit-Shape_counter */
 void	pces_counter(t_mapinfo *pces)
 {
+	pces->y = 0;
 	pces->res = ft_strlen(pces->map[pces->y]);
 	while (pces->map[pces->y])
 	{
