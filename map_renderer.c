@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:34:02 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 00:32:18 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/16 04:14:29 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	render_objs(t_mapinfo *sy)
 			if (sy->map[sy->y][sy->x] == 'C')
 				mlx_put_image_to_window(sy->ptr, sy->win, sy->coin,
 					sy->x * RES, sy->y * RES);
-
 			sy->x++;
 		}
 		sy->y++;
@@ -61,6 +60,8 @@ void	ft_put_xpm(t_mapinfo *fs)
 {
 	fs->win = mlx_new_window(fs->ptr, fs->res * RES,
 			fs->line_count * RES, "so_long");
+	fs->exit_open = mlx_xpm_file_to_image(fs->ptr, "./Textures/End_portal.xpm",
+	 		&fs->width, &fs->height);
 	fs->exit = mlx_xpm_file_to_image(fs->ptr, "./Textures/End_portal.xpm",
 			&fs->width, &fs->height);
 	fs->wall = mlx_xpm_file_to_image(fs->ptr, "./Textures/Bedwock.xpm",
@@ -71,9 +72,21 @@ void	ft_put_xpm(t_mapinfo *fs)
 			&fs->width, &fs->height);
 	fs->player_right = mlx_xpm_file_to_image(fs->ptr,
 			"./Textures/look_right.xpm", &fs->width, &fs->height);
+	fs->player = fs->player_right;
 	fs->coin = mlx_xpm_file_to_image(fs->ptr, "./Textures/ender_eye_1.xpm",
 			&fs->width, &fs->height);
 	fs->backg = mlx_xpm_file_to_image(fs->ptr, "./Textures/Texture_2.xpm",
 			&fs->width, &fs->height);
-	fs->player = fs->player_right;
+	fs->win_screen = mlx_xpm_file_to_image(fs->ptr, "./Textures/win.xpm", &fs->width,
+			&fs->height);
+}
+
+int	game_over(t_mapinfo *game)
+{
+	if (game->game_over && game->won)
+	{
+		ft_printf("%sYou Win!%s", YELLOW, DEFAULT);
+		exit(0);
+	}
+	return (0);
 }

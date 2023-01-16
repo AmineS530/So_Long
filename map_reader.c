@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/15 23:49:11 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/16 03:23:07 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ t_mapinfo	process_map(char	*map_name)
 	mc.player_count = 0;
 	mc.collectables_count = 0;
 	mc.exit_count = 0;
+	mc.won = FALSE;
+	mc.game_over = FALSE;
 	characters_checker(&mc);
 	pces_counter(&mc);
 	border_checker(&mc);

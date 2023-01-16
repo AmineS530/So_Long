@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 00:37:43 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/16 04:07:14 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 # define GREEN "\e[32m"
 # define CYAN "\e[36m"
 # define DEFAULT "\033[0m"
-
+# define TRUE 1
+#define FALSE 0
 typedef struct s_map_data
 {
 	int					y;
@@ -36,6 +37,8 @@ typedef struct s_map_data
 	int					res;
 	int					line_count;
 	int					tmp;
+	int					game_over;
+	int					won;
 /* graphic related vars */
 	int					height;
 	int					width;
@@ -44,11 +47,13 @@ typedef struct s_map_data
 	void				*wall;
 	void				*coin;
 	void				*backg;
+	void				*exit_open;
 	void				*exit;
 	void				*player;
 	void				*player_up;
 	void				*player_right;
 	void				*player_left;
+	void				*win_screen;
 	int					player_x;
 	int					player_y;
 	int					exit_x;
@@ -72,12 +77,14 @@ void			set_cords(t_mapinfo *xy);
 /* map_renderer */
 void			render_objs(t_mapinfo *objs);
 t_mapinfo		map_renderer(t_mapinfo rdr);
-void	ft_put_xpm(t_mapinfo *files);
+void			ft_put_xpm(t_mapinfo *files);
+int				game_over(t_mapinfo *game);
 
 /* movements */
-int	check_for_walls(t_mapinfo *cords, int y, int x, int coin);
-int	ft_movements_ver(t_mapinfo *cords, int dir, int *coins_counter);
-int	ft_movements_hor(t_mapinfo *cords, int dir, int *coins_counter);
-int	ft_input(int keycode, t_mapinfo *cords);
+int				check_for_walls(t_mapinfo *crd, int y, int x, int coin);
+int				cgs(t_mapinfo *crd, int *score, int x, int y);
+int				ft_movements_ver(t_mapinfo *crd, int dir, int *coins_counter);
+int				ft_movements_hor(t_mapinfo *crd, int dir, int *coins_counter);
+int				ft_input(int keycode, t_mapinfo *crd);
 
 #endif

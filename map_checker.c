@@ -6,12 +6,12 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:33:18 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/15 23:46:55 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/16 03:06:34 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
- /* check border & check for valid path */
+/* check border & check for valid path */
 
 void	border_checker(t_mapinfo	*data)
 {
@@ -21,7 +21,8 @@ void	border_checker(t_mapinfo	*data)
 	{
 		data->x = 0;
 		if ((data->map[data->tmp][data->x] && data->tmp == 0 && data->x == 0) ||
-			(data->map[data->tmp][data->x] && data->tmp + 1 == data->line_count && data->x == 0))
+			(data->map[data->tmp][data->x] && data->tmp + 1 == data->line_count
+			&& data->x == 0))
 			check_firstnlast(data);
 		if ((data->map[data->tmp][data->x] && data->tmp < data->line_count - 1 &&
 			data->x == 0 )|| (data->map[data->tmp][data->x] &&

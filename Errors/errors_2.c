@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:17:55 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/09 14:46:18 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/16 04:01:55 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	emptymap_err(void)
 {
-	ft_printf("The map is empty");
+	ft_printf("%sError\nThe map is empty", RED);
 	exit(6);
 }
 
 void	invalid_char_err(void)
 {
-	ft_printf("Map contains invalid character");
+	ft_printf("%sError\nMap contains invalid character", RED);
 	exit(7);
 }
 
 void	invalid_border_err(void)
 {
-	ft_printf("Invalid map border");
+	ft_printf("%sError\nInvalid map border", RED);
 	exit(8);
 }
