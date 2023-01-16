@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 04:07:14 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/16 05:45:42 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 # define CYAN "\e[36m"
 # define DEFAULT "\033[0m"
 # define TRUE 1
-#define FALSE 0
+# define FALSE 0
+
 typedef struct s_map_data
 {
 	int					y;
@@ -39,7 +40,6 @@ typedef struct s_map_data
 	int					tmp;
 	int					game_over;
 	int					won;
-/* graphic related vars */
 	int					height;
 	int					width;
 	void				*ptr;
@@ -60,6 +60,8 @@ typedef struct s_map_data
 	int					exit_y;
 	int					moves_counter;
 }						t_mapinfo;
+/* game */
+int				game_over(t_mapinfo *game);
 
 /* map_reader */
 char			*name_checker(char *map_name);
@@ -78,7 +80,7 @@ void			set_cords(t_mapinfo *xy);
 void			render_objs(t_mapinfo *objs);
 t_mapinfo		map_renderer(t_mapinfo rdr);
 void			ft_put_xpm(t_mapinfo *files);
-int				game_over(t_mapinfo *game);
+void			ft_put_images(t_mapinfo *sy);
 
 /* movements */
 int				check_for_walls(t_mapinfo *crd, int y, int x, int coin);

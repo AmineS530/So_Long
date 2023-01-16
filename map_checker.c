@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:33:18 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 03:06:34 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/16 05:23:56 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	border_checker(t_mapinfo	*data)
 			(data->map[data->tmp][data->x] && data->tmp + 1 == data->line_count
 			&& data->x == 0))
 			check_firstnlast(data);
-		if ((data->map[data->tmp][data->x] && data->tmp < data->line_count - 1 &&
-			data->x == 0 )|| (data->map[data->tmp][data->x] &&
+		if ((data->map[data->tmp][data->x] && data->tmp < data->line_count - 1
+			&& data->x == 0) || (data->map[data->tmp][data->x] &&
 				data->tmp < data->line_count - 1 && data->x == data->res))
 			check_sides(data);
 	}
@@ -38,7 +38,7 @@ void	check_firstnlast(t_mapinfo *data)
 		if (data->map[data->tmp][data->x] == '1' )
 			data->x++;
 		else
-				invalid_border_err();
+			invalid_border_err();
 	}
 }
 
@@ -49,7 +49,8 @@ void	check_sides(t_mapinfo *data)
 		data->x = data->res - 1;
 		if (data->map[data->y][0] == '1' && data->map[data->y][data->x] == '1')
 			data->y++;
-		else if ((data->map[data->y][0] != '1' || data->map[data->y][data->x] != '1'))
+		else if ((data->map[data->y][0] != '1'
+			|| data->map[data->y][data->x] != '1'))
 			invalid_border_err();
 	}
 }
@@ -63,15 +64,15 @@ void	set_cords(t_mapinfo *xy)
 		while (xy->map[xy->y][xy->x])
 		{
 			if (xy->map[xy->y][xy->x] == 'P')
-				{
-					xy->player_x = xy->x;
-					xy->player_y = xy->y;
-				}
+			{
+				xy->player_x = xy->x;
+				xy->player_y = xy->y;
+			}
 			if (xy->map[xy->y][xy->x] == 'E')
-				{
-					xy->exit_x = xy->x;
-					xy->exit_y = xy->y;
-				}
+			{
+				xy->exit_x = xy->x;
+				xy->exit_y = xy->y;
+			}
 			xy->x++;
 		}
 		xy->y++;
