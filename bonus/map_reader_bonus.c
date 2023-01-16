@@ -6,11 +6,11 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 03:23:07 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/16 16:57:50 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 /*ill need a tmp fd while i get the actual fd or actually open the map here*/
 char	*name_checker(char *map_name)

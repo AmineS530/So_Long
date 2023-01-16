@@ -2,18 +2,25 @@
 NAME = so_long
 
 SRC = game.c \
-		map_reader.c \
+		mandatory/map_reader.c \
 		map_checker.c \
-		map_renderer.c \
-		movements.c \
+		mandatory/map_renderer.c \
+		mandatory/movements.c \
+
+SRC_BONUS = game.c \
+		bonus/map_reader_bonus.c \
+		map_checker.c \
+		bonus/map_renderer_bonus.c \
+		bonus/movements_bonus.c \
 
 OBJ = $(SRC:.c=.o)
+
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 LIBFT = Utils/libft/
 
 ERRORS = Errors/errors_1.c \
 			Errors/errors_2.c \
-
 
 ERRORS_OBJ = $(ERRORS:.c=.o)
 
@@ -37,15 +44,18 @@ $(FT_PRINTF_PATH) :
 $(NAME): $(OBJ) $(ERRORS_OBJ) $(FT_PRINTF_PATH) $(LIBFT_PATH)
 	$(CC) $(OBJ) $(ERRORS_OBJ) -LTextures -lmlx $(LIBFT_PATH) $(FT_PRINTF_PATH) -framework OpenGL -framework AppKit -o $(NAME)
 
+bonus: $(OBJ_BONUS) $(ERRORS_OBJ) $(FT_PRINTF_PATH) $(LIBFT_PATH)
+	$(CC) $(OBJ_BONUS) $(ERRORS_OBJ) -LTextures -lmlx $(LIBFT_PATH) $(FT_PRINTF_PATH) -framework OpenGL -framework AppKit -o $(NAME)_bonus
+
 clean :
 	make -C $(LIBFT) clean
 	make -C $(FT_PRINTF) clean
-	rm -rf $(OBJ) $(ERRORS_OBJ)
+	rm -rf $(OBJ) $(ERRORS_OBJ) $(OBJ_BONUS)
 
 fclean : clean
 	make -C $(LIBFT) fclean
 	make -C $(FT_PRINTF) fclean
-	rm -rf $(NAME)
+	rm -rf $(NAME) $(NAME)_bonus
 
 re : fclean all
 

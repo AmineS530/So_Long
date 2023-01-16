@@ -6,11 +6,11 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:34:02 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 05:44:14 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/16 16:57:45 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 t_mapinfo	map_renderer(t_mapinfo rdr)
 {

@@ -6,11 +6,11 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:52:38 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 05:45:08 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/16 16:57:36 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	check_for_walls(t_mapinfo *crd, int y, int x, int coin)
 {
