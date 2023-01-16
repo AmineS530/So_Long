@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:52:38 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 18:16:20 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/16 19:04:13 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	ft_movements_ver(t_mapinfo *crd, int dir, int *score)
 		if (crd->map[y][crd->player_x] != 'E')
 			crd->map[y][crd->player_x] = '0';
 		crd->player_y += dir;
+		if (crd->map[crd->player_y][crd->player_x] == 'F')
+			crd->game_over = TRUE;
 		if (crd->map[crd->player_y][crd->player_x] == 'C')
 			ft_printf("Ender eyes collected:%s %d / %d\n%s", YELLOW,
 				++(*score), crd->collectables_count, DEFAULT);
@@ -55,7 +57,6 @@ int	ft_movements_ver(t_mapinfo *crd, int dir, int *score)
 			crd->player = crd->player_up;
 		if (dir == 1)
 			crd->player = crd->player_right;
-		ft_printf("Number of movements: %d\n\n", crd->moves_counter);
 	}
 	return (cgs(crd, score, crd->player_y, crd->player_x));
 }
@@ -71,6 +72,8 @@ int	ft_movements_hor(t_mapinfo *crd, int dir, int *score)
 		if (crd->map[crd->player_y][x] != 'E')
 			crd->map[crd->player_y][crd->player_x] = '0';
 				crd->player_x += dir;
+		if (crd->map[crd->player_y][crd->player_x] == 'F')
+			crd->game_over = TRUE;
 		if (crd->map[crd->player_y][crd->player_x] == 'C')
 			ft_printf("Ender eyes collected:%s %d / %d\n%s", YELLOW,
 				++(*score), crd->collectables_count, DEFAULT);
@@ -83,7 +86,6 @@ int	ft_movements_hor(t_mapinfo *crd, int dir, int *score)
 			crd->player = crd->player_right;
 		else if (dir == -1)
 			crd->player = crd->player_left;
-		ft_printf("Number of movements: %d\n\n", crd->moves_counter);
 	}
 	return (cgs(crd, score, crd->player_y, crd->player_x));
 }
@@ -112,6 +114,7 @@ int	ft_input(int keycode, t_mapinfo *crd)
 		cgs(crd, &score, crd->player_y, crd->player_x);
 	mlx_clear_window(crd->ptr, crd->win);
 	render_objs(crd);
-	game_over(crd);
-	return (0);
+	mlx_string_put(crd->ptr, crd->win, (crd->res / 2) * RES, 10, 0x00FFFFFF,
+		ft_itoa(crd->moves_counter));
+	return (game_over(crd));
 }
