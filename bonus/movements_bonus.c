@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movements.c                                        :+:      :+:    :+:   */
+/*   movements_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:52:38 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 16:57:36 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/16 18:16:20 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int	cgs(t_mapinfo *crd, int *score, int y, int x)
 		game_over(crd);
 		return (0);
 	}
-	else
-		crd->won = FALSE;
 	return (1);
 }
 
@@ -113,7 +111,7 @@ int	ft_input(int keycode, t_mapinfo *crd)
 	else
 		cgs(crd, &score, crd->player_y, crd->player_x);
 	mlx_clear_window(crd->ptr, crd->win);
-	game_over(crd);
 	render_objs(crd);
+	game_over(crd);
 	return (0);
 }

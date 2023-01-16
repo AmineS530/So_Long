@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_renderer.c                                     :+:      :+:    :+:   */
+/*   map_renderer_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 15:34:02 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 16:57:45 by asadik           ###   ########.fr       */
+/*   Created: 2023/01/16 17:12:43 by asadik            #+#    #+#             */
+/*   Updated: 2023/01/16 18:17:45 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void	ft_put_xpm(t_mapinfo *fs)
 			"./Textures/look_right.xpm", &fs->width, &fs->height);
 	fs->coin = mlx_xpm_file_to_image(fs->ptr, "./Textures/ender_eye_1.xpm",
 			&fs->width, &fs->height);
-	fs->backg = mlx_xpm_file_to_image(fs->ptr, "./Textures/Texture_2.xpm",
+	fs->backg = mlx_xpm_file_to_image(fs->ptr, "./Textures/end_block.xpm",
 			&fs->width, &fs->height);
-	fs->win_screen = mlx_xpm_file_to_image(fs->ptr, "./Textures/win.xpm",
+	fs->enemy = mlx_xpm_file_to_image(fs->ptr, "./Textures/enderman_2.xpm",
 			&fs->width, &fs->height);
 	fs->player = fs->player_right;
 }
@@ -72,11 +72,15 @@ void	ft_put_images(t_mapinfo *sy)
 		mlx_put_image_to_window(sy->ptr, sy->win, sy->wall,
 			sy->x * RES, sy->y * RES);
 	if (sy->map[sy->y][sy->x] == 'P' || sy->map[sy->y][sy->x] == 'C' ||
-			sy->map[sy->y][sy->x] == 'E' || sy->map[sy->y][sy->x] == '0')
+			sy->map[sy->y][sy->x] == 'E' || sy->map[sy->y][sy->x] == '0'
+			|| sy->map[sy->y][sy->x] == 'F')
 		mlx_put_image_to_window(sy->ptr, sy->win, sy->backg,
 			sy->x * RES, sy->y * RES);
 	if (sy->map[sy->y][sy->x] == 'E')
 		mlx_put_image_to_window(sy->ptr, sy->win, sy->exit,
+			sy->x * RES, sy->y * RES);
+	if (sy->map[sy->y][sy->x] == 'F')
+		mlx_put_image_to_window(sy->ptr, sy->win, sy->enemy,
 			sy->x * RES, sy->y * RES);
 	if (sy->map[sy->y][sy->x] == 'P')
 		mlx_put_image_to_window(sy->ptr, sy->win, sy->player,

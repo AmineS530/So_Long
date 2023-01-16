@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:34:02 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 16:57:45 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/16 17:38:27 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ void	ft_put_xpm(t_mapinfo *fs)
 	fs->coin = mlx_xpm_file_to_image(fs->ptr, "./Textures/ender_eye_1.xpm",
 			&fs->width, &fs->height);
 	fs->backg = mlx_xpm_file_to_image(fs->ptr, "./Textures/Texture_2.xpm",
-			&fs->width, &fs->height);
-	fs->win_screen = mlx_xpm_file_to_image(fs->ptr, "./Textures/win.xpm",
 			&fs->width, &fs->height);
 	fs->player = fs->player_right;
 }

@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:37:22 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 05:30:36 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/16 17:46:38 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,12 @@ int	game_over(t_mapinfo *game)
 {
 	if (game->game_over && game->won)
 	{
-		ft_printf("%sYou Win!%s", YELLOW, DEFAULT);
+		ft_printf("%sYou Win!%s", GREEN, DEFAULT);
+		exit(0);
+	}
+	if (game->game_over && !game->won)
+	{
+		ft_printf("%sYou Died!%s", RED, DEFAULT);
 		exit(0);
 	}
 	return (0);

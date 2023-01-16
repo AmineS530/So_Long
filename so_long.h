@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 05:45:42 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/16 17:37:46 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,12 @@ typedef struct s_map_data
 	void				*backg;
 	void				*exit_open;
 	void				*exit;
+	void				*enemy;
+	void				*e_count;
 	void				*player;
 	void				*player_up;
 	void				*player_right;
 	void				*player_left;
-	void				*win_screen;
 	int					player_x;
 	int					player_y;
 	int					exit_x;

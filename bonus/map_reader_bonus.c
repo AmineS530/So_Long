@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_reader.c                                       :+:      :+:    :+:   */
+/*   map_reader_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 16:57:50 by asadik           ###   ########.fr       */
+/*   Created: 2023/01/16 17:12:50 by asadik            #+#    #+#             */
+/*   Updated: 2023/01/16 17:36:13 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,11 @@ void	characters_checker(t_mapinfo *chr)
 				chr->map[chr->y][chr->x] == 'E' ||
 				chr->map[chr->y][chr->x] == 'C')
 					chr->x++;
+			else if (chr->map[chr->y][chr->x] == 'F')
+			{
+				chr->e_count++;
+					chr->x++;
+			}
 			else
 				invalid_char_err();
 		}
@@ -121,6 +126,7 @@ t_mapinfo	process_map(char	*map_name)
 	mc.player_count = 0;
 	mc.collectables_count = 0;
 	mc.exit_count = 0;
+	mc.e_count = 0;
 	mc.won = FALSE;
 	mc.game_over = FALSE;
 	characters_checker(&mc);
