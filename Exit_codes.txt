@@ -1,3 +1,4 @@
+0 (exit success)
 1 Invalid map name
 2 Map doesn't exist
 3 Map border isn't aligned

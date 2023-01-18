@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.h                                           :+:      :+:    :+:   */
+/*   errors_3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/04 14:45:39 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/18 17:42:45 by asadik           ###   ########.fr       */
+/*   Created: 2023/01/17 20:06:22 by asadik            #+#    #+#             */
+/*   Updated: 2023/01/18 17:42:28 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERRORS_H
-# define ERRORS_H
-# include "../so_long.h"
+#include"errors.h"
 
-/* errors1 */
-void	invalid_name_err(void);
-void	nomap_err(void);
-void	map_border_err(void);
-void	invalid_shape_err(void);
-void	invalid_settings_err(void);
-/* errors2 */
-void	emptymap_err(void);
-void	invalid_char_err(void);
-void	invalid_border_err(void);
-/* errors3 */
-void	ft_close_window(void *ptr, void *win);
-
-#endif
+void	ft_close_window(void *ptr, void *win)
+{
+	mlx_destroy_window(ptr, win);
+	ft_printf("%s You have closed the game %s", RED, DEFAULT);
+	exit(0);
+}

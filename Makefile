@@ -21,6 +21,7 @@ LIBFT = Utils/libft/
 
 ERRORS = Errors/errors_1.c \
 			Errors/errors_2.c \
+			Errors/errors_3.c \
 
 ERRORS_OBJ = $(ERRORS:.c=.o)
 
@@ -42,10 +43,10 @@ $(FT_PRINTF_PATH) :
 	make -C $(FT_PRINTF)
 
 $(NAME): $(OBJ) $(ERRORS_OBJ) $(FT_PRINTF_PATH) $(LIBFT_PATH)
-	$(CC) $(OBJ) $(ERRORS_OBJ) -LTextures -lmlx $(LIBFT_PATH) $(FT_PRINTF_PATH) -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(OBJ) $(ERRORS_OBJ) -lmlx $(LIBFT_PATH) $(FT_PRINTF_PATH) -framework OpenGL -framework AppKit -o $(NAME)
 
 bonus: $(OBJ_BONUS) $(ERRORS_OBJ) $(FT_PRINTF_PATH) $(LIBFT_PATH)
-	$(CC) $(OBJ_BONUS) $(ERRORS_OBJ) -LTextures -lmlx $(LIBFT_PATH) $(FT_PRINTF_PATH) -framework OpenGL -framework AppKit -o $(NAME)_bonus
+	$(CC) $(OBJ_BONUS) $(ERRORS_OBJ) -lmlx $(LIBFT_PATH) $(FT_PRINTF_PATH) -framework OpenGL -framework AppKit -o $(NAME)_bonus
 
 clean :
 	make -C $(LIBFT) clean

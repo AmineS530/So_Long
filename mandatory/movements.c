@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:52:38 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 16:57:36 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/18 17:47:03 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,20 +94,16 @@ int	ft_input(int keycode, t_mapinfo *crd)
 {
 	static int	score;
 
-	if (keycode == 126)
+	if (keycode == 126 || keycode == 13)
 		ft_movements_ver(crd, -1, &score);
-	else if (keycode == 125)
+	else if (keycode == 125 || keycode == 1)
 		ft_movements_ver(crd, 1, &score);
-	else if (keycode == 123)
+	else if (keycode == 123 || keycode == 0)
 		ft_movements_hor(crd, -1, &score);
-	else if (keycode == 124)
+	else if (keycode == 124 || keycode == 2)
 		ft_movements_hor(crd, 1, &score);
 	else if (keycode == 53)
-	{
-		mlx_destroy_window(crd->ptr, crd->win);
-		ft_printf("%s You have closed the game %s", RED, DEFAULT);
-		exit(0);
-	}
+		ft_close_window(crd->ptr, crd->win);
 	if (crd->collectables_count == score)
 		crd->exit = crd->exit_open;
 	else
