@@ -7,3 +7,4 @@
 6 Empty map
 7 Invalid characters
 8 Invalid border
+9 No valid path

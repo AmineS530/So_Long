@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 17:37:46 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/18 18:56:49 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void			border_checker(t_mapinfo	*data);
 void			check_firstnlast(t_mapinfo *data);
 void			check_sides(t_mapinfo *data);
 void			set_cords(t_mapinfo *xy);
+int				check_path(t_mapinfo *path, int y, int x);
 
 /* map_renderer */
 void			render_objs(t_mapinfo *objs);

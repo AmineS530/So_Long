@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:12:50 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 17:36:13 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/18 19:42:24 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ t_mapinfo	process_map(char	*map_name)
 	characters_checker(&mc);
 	pces_counter(&mc);
 	border_checker(&mc);
+	set_cords(&mc);
 	return (mc);
 }
 

@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:33:18 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/18 18:03:12 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/18 19:43:38 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,3 +79,18 @@ void	set_cords(t_mapinfo *xy)
 	}
 }
 
+// int	check_path(t_mapinfo *path, int y, int x)
+// {
+// 	if (path->map[y][x] == '0')
+// 	{
+// 		path->map[y][x] = 'P';
+// 		if (check_path(path, y, x + 1) == 2)
+// 			return 2;
+// 		if (check_path(path, y + 1, x) == 2)
+// 			return 2;
+// 		path->map[y][x] = '0';
+// 	}
+// 	if (y == path->exit_y && x == path->exit_x)
+// 		return 1;
+// 	return (0);
+// }

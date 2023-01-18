@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:34:02 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/16 17:38:27 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/18 18:18:42 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_mapinfo	map_renderer(t_mapinfo rdr)
 {
 	rdr.ptr = mlx_init();
-	set_cords(&rdr);
 	rdr.y = 0;
 	rdr.width = RES * rdr.player_x;
 	rdr.height = RES * rdr.player_y;
