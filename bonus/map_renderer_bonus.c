@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:12:43 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/18 18:16:43 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/19 17:47:19 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_mapinfo	map_renderer(t_mapinfo rdr)
 	ft_put_xpm(&rdr);
 	render_objs(&rdr);
 	mlx_hook(rdr.win, 2, (1L << 0), ft_input, &rdr);
+	mlx_loop_hook(rdr.ptr, ft_animate_enemy, &rdr);
 	mlx_loop(rdr.ptr);
 	return (rdr);
 }
@@ -60,8 +61,8 @@ void	ft_put_xpm(t_mapinfo *fs)
 			&fs->width, &fs->height);
 	fs->backg = mlx_xpm_file_to_image(fs->ptr, "./Textures/end_block.xpm",
 			&fs->width, &fs->height);
-	fs->enemy = mlx_xpm_file_to_image(fs->ptr, "./Textures/enderman_2.xpm",
-			&fs->width, &fs->height);
+	ft_another_put_xpm(fs);
+	fs->enemy = fs->enemy0;
 	fs->player = fs->player_right;
 }
 

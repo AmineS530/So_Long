@@ -6,11 +6,11 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:33:18 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/18 19:43:38 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/22 20:12:12 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 /* check border & check for valid path */
 
 void	border_checker(t_mapinfo	*data)
@@ -79,18 +79,14 @@ void	set_cords(t_mapinfo *xy)
 	}
 }
 
-// int	check_path(t_mapinfo *path, int y, int x)
-// {
-// 	if (path->map[y][x] == '0')
-// 	{
-// 		path->map[y][x] = 'P';
-// 		if (check_path(path, y, x + 1) == 2)
-// 			return 2;
-// 		if (check_path(path, y + 1, x) == 2)
-// 			return 2;
-// 		path->map[y][x] = '0';
-// 	}
-// 	if (y == path->exit_y && x == path->exit_x)
-// 		return 1;
-// 	return (0);
-// }
+int	check_path(t_mapinfo *path, int y, int x)
+{
+	if (y == path->exit_y && x == path->exit_x)
+		return (1);
+	if (path->pathmap [y][x] == '7' || path->pathmap [y][x] == '1'
+		|| path->pathmap [y][x] == 'F')
+		return (0);
+	path->pathmap [y][x] = '7';
+	return (check_path(path, y, x + 1) || check_path(path, y + 1, x)
+		|| check_path(path, y, x - 1) || check_path(path, y - 1, x));
+}

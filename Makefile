@@ -3,15 +3,16 @@ NAME = so_long
 
 SRC = game.c \
 		mandatory/map_reader.c \
-		map_checker.c \
+		mandatory/map_checker.c \
 		mandatory/map_renderer.c \
 		mandatory/movements.c \
 
 SRC_BONUS = game.c \
 		bonus/map_reader_bonus.c \
-		map_checker.c \
+		bonus/map_checker.c \
 		bonus/map_renderer_bonus.c \
 		bonus/movements_bonus.c \
+		bonus/animate.c \
 
 OBJ = $(SRC:.c=.o)
 

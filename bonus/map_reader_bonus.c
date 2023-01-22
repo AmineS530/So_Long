@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:12:50 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/18 19:42:24 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/22 20:10:52 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ t_mapinfo	process_map(char	*map_name)
 	mc.x = 0;
 	mc.tmp = 0;
 	mc.map = read_map(map_name);
+	mc.pathmap = read_map(map_name);
 	mc.player_count = 0;
 	mc.collectables_count = 0;
 	mc.exit_count = 0;
@@ -133,6 +134,8 @@ t_mapinfo	process_map(char	*map_name)
 	pces_counter(&mc);
 	border_checker(&mc);
 	set_cords(&mc);
+	if ((check_path(&mc, mc.player_y, mc.player_x)) != 1)
+		no_valid_path();
 	return (mc);
 }
 

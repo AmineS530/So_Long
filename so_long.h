@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/18 18:56:49 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/22 19:53:56 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_map_data
 	int					y;
 	int					x;
 	char				**map;
+	char				**pathmap;
 	int					player_count;
 	int					exit_count;
 	int					collectables_count;
@@ -50,6 +51,9 @@ typedef struct s_map_data
 	void				*exit_open;
 	void				*exit;
 	void				*enemy;
+	void				*enemy0;
+	void				*enemy1;
+	void				*enemy2;
 	void				*e_count;
 	void				*player;
 	void				*player_up;
@@ -90,5 +94,9 @@ int				cgs(t_mapinfo *crd, int *score, int x, int y);
 int				ft_movements_ver(t_mapinfo *crd, int dir, int *coins_counter);
 int				ft_movements_hor(t_mapinfo *crd, int dir, int *coins_counter);
 int				ft_input(int keycode, t_mapinfo *crd);
+
+/* animate */
+void			ft_another_put_xpm(t_mapinfo *anm);
+int				ft_animate_enemy(t_mapinfo *m);
 
 #endif
