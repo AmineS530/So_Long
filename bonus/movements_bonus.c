@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:52:38 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/18 17:43:12 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/22 21:07:28 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_movements_ver(t_mapinfo *crd, int dir, int *score)
 		if (crd->map[crd->player_y][crd->player_x] == 'F')
 			crd->game_over = TRUE;
 		if (crd->map[crd->player_y][crd->player_x] == 'C')
-			ft_printf("Ender eyes collected:%s %d / %d\n%s", YELLOW,
+			ft_printf("Ender eggs collected:%s %d / %d\n%s", YELLOW,
 				++(*score), crd->collectables_count, DEFAULT);
 		if (crd->map[crd->player_y][crd->player_x] != 'E')
 			crd->map[crd->player_y][crd->player_x] = 'P';
@@ -75,7 +75,7 @@ int	ft_movements_hor(t_mapinfo *crd, int dir, int *score)
 		if (crd->map[crd->player_y][crd->player_x] == 'F')
 			crd->game_over = TRUE;
 		if (crd->map[crd->player_y][crd->player_x] == 'C')
-			ft_printf("Ender eyes collected:%s %d / %d\n%s", YELLOW,
+			ft_printf("Ender eggs collected:%s %d / %d\n%s", YELLOW,
 				++(*score), crd->collectables_count, DEFAULT);
 		if (crd->exit_y == crd->player_y && crd->exit_x == crd->player_x)
 			crd->map[crd->player_y][crd->player_x] = 'E';
@@ -93,7 +93,9 @@ int	ft_movements_hor(t_mapinfo *crd, int dir, int *score)
 int	ft_input(int keycode, t_mapinfo *crd)
 {
 	static int	score;
+	char		*nmb;
 
+	nmb = ft_itoa(crd->moves_counter);
 	if (keycode == 126 || keycode == 13)
 		ft_movements_ver(crd, -1, &score);
 	else if (keycode == 125 || keycode == 1)
@@ -111,6 +113,7 @@ int	ft_input(int keycode, t_mapinfo *crd)
 	mlx_clear_window(crd->ptr, crd->win);
 	render_objs(crd);
 	mlx_string_put(crd->ptr, crd->win, (crd->res / 2) * RES, 10, 0x00FFFFFF,
-		ft_itoa(crd->moves_counter));
+		nmb);
+	free (nmb);
 	return (game_over(crd));
 }

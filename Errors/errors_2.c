@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:17:55 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/18 18:41:34 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/22 21:13:21 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,11 @@ void	no_valid_path(void)
 {
 	ft_printf("%sError\nNo valid path in the map", RED);
 	exit(8);
+}
+
+int	ft_exit(void)
+{
+	ft_printf("%sYou have pressed X to close the game%s", RED, DEFAULT);
+	exit(0);
+	return (0);
 }

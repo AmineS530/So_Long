@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 17:05:22 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/22 20:11:37 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/22 20:56:50 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,26 @@ void	ft_another_put_xpm(t_mapinfo *anm)
 
 int	ft_animate_enemy(t_mapinfo *m)
 {
-	int	i;
+	static int	i;
 
 	i = 0;
 	i++;
 	if (i == 0)
-		m->enemy = m->enemy0;
+	{
+		mlx_put_image_to_window(m->ptr, m->win, m->enemy0,
+			m->x * RES, m->y * RES);
+	}
 	if (i == 1)
-		m->enemy = m->enemy1;
+	{
+		mlx_put_image_to_window(m->ptr, m->win, m->enemy1,
+			m->x * RES, m->y * RES);
+	}
 	if (i == 2)
-		m->enemy = m->enemy2;
-	i = 0;
-	return (1);
+	{
+		mlx_put_image_to_window(m->ptr, m->win, m->enemy2,
+			m->x * RES, m->y * RES);
+	}
+	if (i == 3)
+		i = 0;
+	return (0);
 }

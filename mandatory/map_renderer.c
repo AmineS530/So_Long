@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:34:02 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/18 18:18:42 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/22 21:14:11 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_mapinfo	map_renderer(t_mapinfo rdr)
 	ft_put_xpm(&rdr);
 	render_objs(&rdr);
 	mlx_hook(rdr.win, 2, (1L << 0), ft_input, &rdr);
+	mlx_hook(rdr.win, 17, (1L << 0), ft_exit, &rdr);
 	mlx_loop(rdr.ptr);
 	return (rdr);
 }
