@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 17:05:22 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/24 10:51:11 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/24 15:36:24 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	ft_another_put_xpm(t_mapinfo *anm)
 {
-	anm->enemy0 = mlx_xpm_file_to_image(anm->ptr, "./Textures/enderman_0.xpm",
-			&anm->width, &anm->height);
 	anm->enemy1 = mlx_xpm_file_to_image(anm->ptr, "./Textures/enderman_1.xpm",
 			&anm->width, &anm->height);
 	anm->enemy2 = mlx_xpm_file_to_image(anm->ptr, "./Textures/enderman_2.xpm",
@@ -29,17 +27,18 @@ int	ft_animate_enemy(t_mapinfo *m)
 	i++;
 	if (i == 50)
 	{
-		m->enemy = m->enemy0;
+		m->enemy = m->enemy1;
 		render_objs(m);
 	}
 	if (i == 250)
 	{
-		m->enemy = m->enemy1;
+		m->enemy = m->enemy2;
+		mlx_clear_window(m->ptr, m->win);
 		render_objs(m);
 	}
 	if (i == 750)
 	{
-		m->enemy = m->enemy2;
+		m->enemy = m->enemy1;
 		render_objs(m);
 	}
 	if (i == 1500)

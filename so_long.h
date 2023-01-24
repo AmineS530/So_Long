@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/24 10:51:31 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/24 15:00:10 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ typedef struct s_map_data
 	void				*exit_open;
 	void				*exit;
 	void				*enemy;
-	void				*enemy0;
 	void				*enemy1;
 	void				*enemy2;
 	void				*e_count;

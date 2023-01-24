@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:12:43 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/24 10:56:41 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/24 15:47:23 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 t_mapinfo	map_renderer(t_mapinfo rdr)
 {
 	rdr.ptr = mlx_init();
+	rdr.moves_counter = 0;
 	rdr.y = 0;
 	rdr.width = RES * rdr.player_x;
 	rdr.height = RES * rdr.player_y;
 	ft_put_xpm(&rdr);
 	render_objs(&rdr);
-	mlx_hook(rdr.win, 2, (1L << 0), ft_input, &rdr);
 	mlx_loop_hook(rdr.ptr, ft_animate_enemy, &rdr);
+	mlx_hook(rdr.win, 2, (1L << 0), ft_input, &rdr);
 	mlx_hook(rdr.win, 17, (1L << 0), ft_exit, &rdr);
 	mlx_loop(rdr.ptr);
 	return (rdr);
@@ -35,8 +36,12 @@ void	render_objs(t_mapinfo *sy)
 		sy->x = 0;
 		while (sy->map[sy->y][sy->x])
 		{
+			sy->display_move = ft_itoa(sy->moves_counter);
 			ft_put_images(sy);
+			mlx_string_put(sy->ptr, sy->win, (sy->res / 2) * RES, 10,
+				0x00FFFFFF, sy->display_move);
 			sy->x++;
+			free (sy->display_move);
 		}
 		sy->y++;
 	}
@@ -63,7 +68,7 @@ void	ft_put_xpm(t_mapinfo *fs)
 	fs->backg = mlx_xpm_file_to_image(fs->ptr, "./Textures/end_block.xpm",
 			&fs->width, &fs->height);
 	ft_another_put_xpm(fs);
-	fs->enemy = fs->enemy0;
+	fs->enemy = fs->enemy1;
 	fs->player = fs->player_right;
 }
 
