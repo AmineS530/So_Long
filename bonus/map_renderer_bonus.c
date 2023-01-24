@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:12:43 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/24 15:47:23 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/24 17:35:16 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void	ft_put_xpm(t_mapinfo *fs)
 {
 	fs->win = mlx_new_window(fs->ptr, fs->res * RES,
 			fs->line_count * RES, "so_long_bonus");
-	fs->exit_open = mlx_xpm_file_to_image(fs->ptr, "./Textures/End_portal.xpm",
-			&fs->width, &fs->height);
-	fs->exit = mlx_xpm_file_to_image(fs->ptr, "./Textures/End_portal_close.xpm",
+	fs->exit_open = mlx_xpm_file_to_image(fs->ptr,
+			"./Textures/netherportal1.xpm", &fs->width, &fs->height);
+	fs->exit = mlx_xpm_file_to_image(fs->ptr, "./Textures/netherportal0.xpm",
 			&fs->width, &fs->height);
 	fs->wall = mlx_xpm_file_to_image(fs->ptr, "./Textures/Bedwock.xpm",
 			&fs->width, &fs->height);
