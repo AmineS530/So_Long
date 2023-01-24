@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:52:38 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/22 21:07:28 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/24 10:56:26 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,8 @@ int	ft_movements_hor(t_mapinfo *crd, int dir, int *score)
 int	ft_input(int keycode, t_mapinfo *crd)
 {
 	static int	score;
-	char		*nmb;
 
-	nmb = ft_itoa(crd->moves_counter);
+	crd->display_move = ft_itoa(crd->moves_counter);
 	if (keycode == 126 || keycode == 13)
 		ft_movements_ver(crd, -1, &score);
 	else if (keycode == 125 || keycode == 1)
@@ -113,7 +112,7 @@ int	ft_input(int keycode, t_mapinfo *crd)
 	mlx_clear_window(crd->ptr, crd->win);
 	render_objs(crd);
 	mlx_string_put(crd->ptr, crd->win, (crd->res / 2) * RES, 10, 0x00FFFFFF,
-		nmb);
-	free (nmb);
+		crd->display_move);
+	free (crd->display_move);
 	return (game_over(crd));
 }

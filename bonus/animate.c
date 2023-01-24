@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 17:05:22 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/22 20:56:50 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/24 10:51:11 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,23 @@ int	ft_animate_enemy(t_mapinfo *m)
 {
 	static int	i;
 
-	i = 0;
 	i++;
-	if (i == 0)
+	if (i == 50)
 	{
-		mlx_put_image_to_window(m->ptr, m->win, m->enemy0,
-			m->x * RES, m->y * RES);
+		m->enemy = m->enemy0;
+		render_objs(m);
 	}
-	if (i == 1)
+	if (i == 250)
 	{
-		mlx_put_image_to_window(m->ptr, m->win, m->enemy1,
-			m->x * RES, m->y * RES);
+		m->enemy = m->enemy1;
+		render_objs(m);
 	}
-	if (i == 2)
+	if (i == 750)
 	{
-		mlx_put_image_to_window(m->ptr, m->win, m->enemy2,
-			m->x * RES, m->y * RES);
+		m->enemy = m->enemy2;
+		render_objs(m);
 	}
-	if (i == 3)
+	if (i == 1500)
 		i = 0;
-	return (0);
+	return (i);
 }

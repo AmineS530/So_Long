@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:12:43 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/22 21:12:01 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/24 10:56:41 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	render_objs(t_mapinfo *sy)
 void	ft_put_xpm(t_mapinfo *fs)
 {
 	fs->win = mlx_new_window(fs->ptr, fs->res * RES,
-			fs->line_count * RES, "so_long");
+			fs->line_count * RES, "so_long_bonus");
 	fs->exit_open = mlx_xpm_file_to_image(fs->ptr, "./Textures/End_portal.xpm",
 			&fs->width, &fs->height);
 	fs->exit = mlx_xpm_file_to_image(fs->ptr, "./Textures/End_portal_close.xpm",

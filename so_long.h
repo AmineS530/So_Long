@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:38:56 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/22 19:53:56 by asadik           ###   ########.fr       */
+/*   Updated: 2023/01/24 10:51:31 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_map_data
 	int					x;
 	char				**map;
 	char				**pathmap;
+	char				*display_move;
 	int					player_count;
 	int					exit_count;
 	int					collectables_count;
@@ -83,7 +84,7 @@ void			set_cords(t_mapinfo *xy);
 int				check_path(t_mapinfo *path, int y, int x);
 
 /* map_renderer */
-void			render_objs(t_mapinfo *objs);
+void			render_objs(t_mapinfo *sy);
 t_mapinfo		map_renderer(t_mapinfo rdr);
 void			ft_put_xpm(t_mapinfo *files);
 void			ft_put_images(t_mapinfo *sy);
