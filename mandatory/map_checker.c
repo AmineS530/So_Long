@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:33:18 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/22 20:12:20 by asadik           ###   ########.fr       */
+/*   Updated: 2023/02/06 19:39:48 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,12 @@ void	set_cords(t_mapinfo *xy)
 
 int	check_path(t_mapinfo *path, int y, int x)
 {
-	if (y == path->exit_y && x == path->exit_x)
+	static int	i;
+
+	if (path->pathmap [y][x] == 'C')
+		i++;
+	if (i == path->collectables_count
+		&& y == path->exit_y && x == path->exit_x)
 		return (1);
 	if (path->pathmap [y][x] == '7' || path->pathmap [y][x] == '1')
 		return (0);

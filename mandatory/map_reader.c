@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/22 21:18:23 by asadik           ###   ########.fr       */
+/*   Updated: 2023/02/06 19:35:54 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,6 @@ void	pces_counter(t_mapinfo *pces)
 		}
 		pces->y++;
 	}
-	if (pces->res <= pces->y)
-		invalid_shape_err();
 	if (pces->player_count != 1 || pces->collectables_count < 1
 		|| pces->exit_count != 1)
 		invalid_settings_err();
@@ -132,23 +130,3 @@ t_mapinfo	process_map(char	*map_name)
 		no_valid_path();
 	return (mc);
 }
-
-// int main(int argc, char *argv[])
-// {
-// 	if (argc == 2)
-// 	{
-// 		t_mapinfo test;
-// 		int y = 0;
-// 		test = process_map(argv[1]);
-// 		 ft_printf("%d\n", test.collectables_count);
-// 		 ft_printf("%d\n", test.player_count);
-// 		 ft_printf("%d\n", test.exit_count);
-// 		 while (test.map[y])
-// 			ft_printf("%s \n",test.map[y++]);
-// 		 while (1)
-// 	}
-// 	else
-// 	ft_printf("I quote \"%sYou didn't include a map, YOU DUCK%s\",%s Yuki%s",
-// 		YELLOW, DEFAULT, CYAN, DEFAULT);
-// 	return (0);
-// }

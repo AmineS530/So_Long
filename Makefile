@@ -9,7 +9,7 @@ SRC = game.c \
 
 SRC_BONUS = game.c \
 		bonus/map_reader_bonus.c \
-		bonus/map_checker.c \
+		bonus/map_checker_bonus.c \
 		bonus/map_renderer_bonus.c \
 		bonus/movements_bonus.c \
 		bonus/animate.c \
