@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:12:50 by asadik            #+#    #+#             */
-/*   Updated: 2023/02/06 19:30:15 by asadik           ###   ########.fr       */
+/*   Updated: 2023/02/06 20:04:04 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,6 @@ void	pces_counter(t_mapinfo *pces)
 		}
 		pces->y++;
 	}
-	if (pces->res <= pces->y)
-		invalid_shape_err();
 	if (pces->player_count != 1 || pces->collectables_count < 1
 		|| pces->exit_count != 1)
 		invalid_settings_err();
