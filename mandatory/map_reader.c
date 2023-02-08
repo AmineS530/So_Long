@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/02/06 19:35:54 by asadik           ###   ########.fr       */
+/*   Updated: 2023/02/08 21:26:14 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	characters_checker(t_mapinfo *chr)
 	chr->line_count = chr->y;
 }
 
-/* Player-Collectable-Exit-Shape_counter */
+/* Player-Collectable-Exit_counter */
 void	pces_counter(t_mapinfo *pces)
 {
 	pces->y = 0;
