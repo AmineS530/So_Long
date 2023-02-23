@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 14:45:39 by asadik            #+#    #+#             */
-/*   Updated: 2023/01/22 21:11:47 by asadik           ###   ########.fr       */
+/*   Updated: 2023/02/23 19:40:59 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void	invalid_name_err(void);
 void	nomap_err(void);
 void	map_border_err(void);
-void	invalid_shape_err(void);
+void	newlines_in_map(void);
 void	invalid_settings_err(void);
 /* errors2 */
 void	emptymap_err(void);
@@ -29,5 +29,4 @@ int		ft_exit(void);
 
 /* errors3 */
 void	ft_close_window(void *ptr, void *win);
-
 #endif

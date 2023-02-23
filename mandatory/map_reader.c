@@ -6,7 +6,7 @@
 /*   By: asadik <asadik@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:27 by asadik            #+#    #+#             */
-/*   Updated: 2023/02/08 21:26:14 by asadik           ###   ########.fr       */
+/*   Updated: 2023/02/23 19:41:21 by asadik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ char	**read_map(char *map_name)
 	while (str != NULL)
 	{
 		map = ft_strjoin(map, str);
+		if (*str == '\n')
+			newlines_in_map();
 		str = get_next_line(fd);
 	}
 	free(str);
